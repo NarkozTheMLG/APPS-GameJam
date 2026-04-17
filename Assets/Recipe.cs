@@ -4,7 +4,6 @@ using UnityEngine;
 public class Recipe : ScriptableObject
 {
     public string recipeName;
-    public Sprite gridShapeImage;
-    public Sprite ingredientImage;
+    public Sprite FoodSprite;
     public IngredientData[] ingredientsNeeded;
 }

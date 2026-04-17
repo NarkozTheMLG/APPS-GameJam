@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a19874574811f140bb08544b4f572cd, type: 3}
-  m_Name: Tomato
+  m_Name: Lettuce
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
-  ingredientName: Tomato
-  IngredientImage: {fileID: 8388100693756106458, guid: 5eab53efedacefc4b84fad24ac5aca7a, type: 3}
-  ingredientBlock: {fileID: 6048862160296339182, guid: cfa71685220211c419b5ecd6918255bb, type: 3}
+  ingredientName: Letuce
+  IngredientImage: {fileID: 6017480785244616084, guid: d8532711c0a665441aa90cf0a0c9594b, type: 3}
+  ingredientBlock: {fileID: 0}
   blueprint: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

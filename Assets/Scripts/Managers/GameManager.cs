@@ -1,9 +1,13 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance { get; private set; }
+    [Header("Timer Display")]
+    public TextMeshProUGUI TimerText;
+
 
     [Header("Level Settings")]
     public Recipe[] OrderedRecepies;
@@ -44,6 +48,11 @@ public class GameManager : MonoBehaviour
         // Count down the global timer
         timeRemaining -= Time.deltaTime;
 
+
+        float currentTimer = GameManager.Instance.timeRemaining;
+        int displaySeconds = Mathf.CeilToInt(currentTimer);
+        TimerText.text = "Time Left: " + displaySeconds.ToString();
+
         if (timeRemaining <= 0)
         {
             TriggerGameOver();
@@ -52,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadCustomerOrder()
     {
-        // Check if we won the level
         if (CurrentOrderIndex >= OrderedRecepies.Length)
         {
             TriggerWin();
@@ -60,10 +68,13 @@ public class GameManager : MonoBehaviour
         }
 
         Recipe currentFood = OrderedRecepies[CurrentOrderIndex];
-        IngredientData currentTarget = currentFood.ingredientsNeeded[currentIngredientIndex];
+        //IngredientData currentTarget = currentFood.ingredientsNeeded[currentIngredientIndex];
 
         // TODO: Tell the UI to show this food
-
+        if (OrderUIManager.Instance != null)
+        {
+            OrderUIManager.Instance.UpdateDisplay(currentFood.FoodSprite, currentFood.ingredientsNeeded);
+        }
 
         // TODO: Tell the GridManager to check against this specific ingredient shape
     }

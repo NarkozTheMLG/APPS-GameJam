@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0066e06ff3976764a9e82b7b715ed129, type: 3}
+  m_Name: Hamburger
+  m_EditorClassIdentifier: Assembly-CSharp::Recipe
+  recipeName: Hamburger
+  FoodSprite: {fileID: 8388100693756106458, guid: 5eab53efedacefc4b84fad24ac5aca7a, type: 3}
+  ingredientsNeeded:
+  - {fileID: 11400000, guid: 59e9e5a157a89564790907ce3c0e3c15, type: 2}
+  - {fileID: 11400000, guid: 5ff65f7d88709044d90d92ad4e6dd09a, type: 2}
+  - {fileID: 11400000, guid: 951eaa065810d074794e6354d5c5880d, type: 2}
