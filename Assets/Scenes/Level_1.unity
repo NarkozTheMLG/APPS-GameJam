@@ -440,6 +440,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   TimerText: {fileID: 168209498}
+  allIngredients:
+  - {fileID: 11400000, guid: 5ff65f7d88709044d90d92ad4e6dd09a, type: 2}
+  - {fileID: 11400000, guid: 471dc28e0f172394fad72272b392fe12, type: 2}
+  - {fileID: 11400000, guid: 951eaa065810d074794e6354d5c5880d, type: 2}
+  - {fileID: 11400000, guid: 59e9e5a157a89564790907ce3c0e3c15, type: 2}
+  - {fileID: 11400000, guid: 05cd3568cccd8b643a107a75c8c0d167, type: 2}
+  - {fileID: 11400000, guid: 6ff091abc56612049a7fc7987e5da7f1, type: 2}
+  - {fileID: 11400000, guid: 6cbfe2bf63e2c93439783c0fc3966929, type: 2}
+  - {fileID: 11400000, guid: 2d6504529dce24046943f21a56019b2e, type: 2}
+  - {fileID: 11400000, guid: 350f8976dabf5e742ba1769b11e83a49, type: 2}
   OrderedRecepies:
   - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
   - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
@@ -565,11 +575,11 @@ PrefabInstance:
     - target: {fileID: 3893886578150081287, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: shapeDisplay
       value: 
-      objectReference: {fileID: 661113657}
+      objectReference: {fileID: 661113656}
     - target: {fileID: 3893886578150081287, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: ingredientDisplay
       value: 
-      objectReference: {fileID: 661113656}
+      objectReference: {fileID: 661113657}
     - target: {fileID: 5564381908143144789, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -7.5
@@ -1207,11 +1217,11 @@ PrefabInstance:
     - target: {fileID: 3893886578150081287, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: shapeDisplay
       value: 
-      objectReference: {fileID: 1158959438}
+      objectReference: {fileID: 1158959437}
     - target: {fileID: 3893886578150081287, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: ingredientDisplay
       value: 
-      objectReference: {fileID: 1158959437}
+      objectReference: {fileID: 1158959438}
     - target: {fileID: 5564381908143144789, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -7.499999
@@ -2234,11 +2244,11 @@ PrefabInstance:
     - target: {fileID: 3893886578150081287, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: shapeDisplay
       value: 
-      objectReference: {fileID: 747829506}
+      objectReference: {fileID: 1830080442}
     - target: {fileID: 3893886578150081287, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: ingredientDisplay
       value: 
-      objectReference: {fileID: 1830080442}
+      objectReference: {fileID: 747829506}
     - target: {fileID: 5564381908143144789, guid: 25704b43565e4564799e73f50b79460b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -7.499999

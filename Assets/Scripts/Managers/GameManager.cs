@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [Header("Timer Display")]
     public TextMeshProUGUI TimerText;
 
+    [Header("All Ingredients for Ingredient Notes")]
+    public IngredientData[] allIngredients;
 
     [Header("Level Settings")]
     public Recipe[] OrderedRecepies;

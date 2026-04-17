@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class RecipitDataManager : MonoBehaviour
 {
-    [Header("Data")]
-    public IngredientData[] allRecipes;
+    private IngredientData[] data;
 
     [Header("Note Slots")]
     public RecipitNoteManager[] slots = new RecipitNoteManager[3];
@@ -16,18 +15,20 @@ public class RecipitDataManager : MonoBehaviour
 
     void Start()
     {
-        if (allRecipes.Length > 0) UpdateSingleSlot(0, currentIndex1);
-        if (allRecipes.Length > 1) UpdateSingleSlot(1, currentIndex2);
-        if (allRecipes.Length > 2) UpdateSingleSlot(2, currentIndex3);
+        data = GameManager.Instance.allIngredients;
+
+        if (data.Length > 0) UpdateSingleSlot(0, currentIndex1);
+        if (data.Length > 1) UpdateSingleSlot(1, currentIndex2);
+        if (data.Length > 2) UpdateSingleSlot(2, currentIndex3);
     }
 
     public void AdvanceSlot1()
     {
-        if (allRecipes.Length == 0) return;
+        if (data.Length == 0) return;
 
         currentIndex1 = (currentIndex1 + 1);
-        if (currentIndex1 >= allRecipes.Length) {
-            currentIndex1 = currentIndex1 - allRecipes.Length;
+        if (currentIndex1 >= data.Length) {
+            currentIndex1 = currentIndex1 - data.Length;
         }
         UpdateSingleSlot(0, currentIndex1);
     }
@@ -35,12 +36,12 @@ public class RecipitDataManager : MonoBehaviour
     // Link this to Button 2's OnClick event in the Inspector
     public void AdvanceSlot2()
     {
-        if (allRecipes.Length == 0) return;
+        if (data.Length == 0) return;
 
         currentIndex2 = (currentIndex2 + 1);
-        if (currentIndex2 >= allRecipes.Length)
+        if (currentIndex2 >= data.Length)
         {
-            currentIndex2 = currentIndex2 - allRecipes.Length;
+            currentIndex2 = currentIndex2 - data.Length;
         }
         UpdateSingleSlot(1, currentIndex2);
     }
@@ -48,12 +49,12 @@ public class RecipitDataManager : MonoBehaviour
     // Link this to Button 3's OnClick event in the Inspector
     public void AdvanceSlot3()
     {
-        if (allRecipes.Length == 0) return;
+        if (data.Length == 0) return;
 
         currentIndex3 = (currentIndex3 + 1);
-        if (currentIndex3 >= allRecipes.Length)
+        if (currentIndex3 >= data.Length)
         {
-            currentIndex3 = currentIndex3 - allRecipes.Length;
+            currentIndex3 = currentIndex3 - data.Length;
         }
 
         UpdateSingleSlot(2, currentIndex3);
@@ -63,7 +64,7 @@ public class RecipitDataManager : MonoBehaviour
     private void UpdateSingleSlot(int slotIndex, int recipeIndex)
     {
         slots[slotIndex].gameObject.SetActive(true);
-        slots[slotIndex].DisplayRecipe(allRecipes[recipeIndex]);
+        slots[slotIndex].DisplayRecipe(data[recipeIndex]);
     }
 }
 
