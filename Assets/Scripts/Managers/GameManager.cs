@@ -2,15 +2,108 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public static GameManager Instance { get; private set; }
+
+    [Header("Level Settings")]
+    public Recipe[] OrderedRecepies;
+    public float levelTimeLimit = 300f; // 5 minutes in seconds
+
+    [Header("Live Data (Don't touch in Inspector)")]
+    public int CurrentOrderIndex = 0;
+    public int currentIngredientIndex = 0; // Tracks which of the 3 ingredients the player is carving
+    public float timeRemaining;
+    public bool isGameActive = false;
+
+    private void Awake()
     {
-        
+        // Set up the Singleton safely
+        if (Instance == null) { Instance = this; }
+        else { Destroy(gameObject); }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        StartLevel();
+    }
+
+    public void StartLevel()
+    {
+        timeRemaining = levelTimeLimit;
+        CurrentOrderIndex = 0;
+        currentIngredientIndex = 0;
+        isGameActive = true;
+
+        LoadCustomerOrder();
+    }
+
+    private void Update()
+    {
+        if (!isGameActive) return;
+
+        // Count down the global timer
+        timeRemaining -= Time.deltaTime;
+
+        if (timeRemaining <= 0)
+        {
+            TriggerGameOver();
+        }
+    }
+
+    public void LoadCustomerOrder()
+    {
+        // Check if we won the level
+        if (CurrentOrderIndex >= OrderedRecepies.Length)
+        {
+            TriggerWin();
+            return;
+        }
+
+        Recipe currentFood = OrderedRecepies[CurrentOrderIndex];
+        IngredientData currentTarget = currentFood.ingredientsNeeded[currentIngredientIndex];
+
+        // TODO: Tell the UI to show this food
+
+
+        // TODO: Tell the GridManager to check against this specific ingredient shape
+    }
+
+    // The Grid Manager will call this function when the player successfully carves a shape!
+    public void OnShapeCarvedSuccessfully()
+    {
+
+        //TODO FIX THIS PART
+
+        /*
+        currentIngredientIndex++;
+
+        // Did we finish all 3 ingredients for this food?
+        if (currentIngredientIndex >= 3)
+        {
+            Debug.Log("Meal complete! Next customer coming up.");
+            CurrentOrderIndex++;
+            currentIngredientIndex = 0; // Reset back to the first ingredient
+            LoadCustomerOrder();
+        }
+        else
+        {
+            Debug.Log("Ingredient done! Moving to ingredient " + (currentIngredientIndex + 1));
+            LoadCustomerOrder();
+        }
+        */
+    }
+
+    private void TriggerGameOver()
+    {
+        // TODO TRANSECXT TO MAIN PAGE
+        isGameActive = false;
+        Debug.Log("TIME IS UP! GAME OVER.");
+    }
+
+    private void TriggerWin()
+    {
+        // TODO TRANSECXT TO MAIN PAGE
+        isGameActive = false;
+        Debug.Log("LEVEL COMPLETE! All customers served.");
     }
 }

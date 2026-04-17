@@ -6,4 +6,5 @@ public class Recipe : ScriptableObject
     public string recipeName;
     public Sprite gridShapeImage;
     public Sprite ingredientImage;
+    public IngredientData[] ingredientsNeeded;
 }
