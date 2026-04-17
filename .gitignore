@@ -2,6 +2,34 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+# --- macOS / Windows Cross-Platform ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- JetBrains Rider ---
+.idea/
+*.sln.iml
+*.idea.iml
+*.csproj.iml
+.idea.SolutionConfiguration.subprojects.xml
+/cmake-build-*/
+
+# --- IDE / Solution Files ---
+# (Ignore these so your friend's VS doesn't fight your Rider)
+*.sln
+*.csproj
+*.unityproj
+.vs/
+
+
+#
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/
