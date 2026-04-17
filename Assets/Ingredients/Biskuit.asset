@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a19874574811f140bb08544b4f572cd, type: 3}
-  m_Name: Berry
+  m_Name: Biskuit
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
-  ingredientName: Berry
-  IngredientImage: {fileID: 2778267843588853002, guid: d13b6b2f8b5aaa5499dfc0e5d22e26e7, type: 3}
-  ingredientBlock: {fileID: 8388100693756106458, guid: 5eab53efedacefc4b84fad24ac5aca7a, type: 3}
+  ingredientName: Biskuit
+  IngredientImage: {fileID: 1989042528420735927, guid: 607e18b8a2df2514fb34f159b1cb6712, type: 3}
+  ingredientBlock: {fileID: 0}
   blueprint: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
