@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class RecipitDataManager : MonoBehaviour
 {
     [Header("Data")]
@@ -8,55 +9,61 @@ public class RecipitDataManager : MonoBehaviour
 
     [Header("Note Slots")]
     public RecipitNoteManager[] slots = new RecipitNoteManager[3];
-    public Button Button;
 
-    private int currentIndex = 0;
+    private int currentIndex1 = 0;
+    private int currentIndex2 = 1;
+    private int currentIndex3 = 2;
 
     void Start()
     {
-        UpdateRecipeDisplay();
+        if (allRecipes.Length > 0) UpdateSingleSlot(0, currentIndex1);
+        if (allRecipes.Length > 1) UpdateSingleSlot(1, currentIndex2);
+        if (allRecipes.Length > 2) UpdateSingleSlot(2, currentIndex3);
     }
 
-    public void UpdateRecipeDisplay()
+    public void AdvanceSlot1()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            int recipeIndex = currentIndex + i;
+        if (allRecipes.Length == 0) return;
 
-            if (recipeIndex < allRecipes.Length)
-            {
-                slots[i].gameObject.SetActive(true); // Turn the slot on
-                slots[i].DisplayRecipe(allRecipes[recipeIndex]); // Feed it the data
-            }
-            else
-            {
-                // If there are no more recipes (e.g., we have 7 total and are on the last page)
-                slots[i].gameObject.SetActive(false); // Hide the empty slot
-            }
+        currentIndex1 = (currentIndex1 + 1);
+        if (currentIndex1 >= allRecipes.Length) {
+            currentIndex1 = currentIndex1 - allRecipes.Length;
         }
-
-        // Optional: Turn off the buttons if you are at the start or end of the list
-        Button.interactable = (currentIndex > 0);
+        UpdateSingleSlot(0, currentIndex1);
     }
 
-    // Link this to your "Next Arrow" UI Button OnClick event
-    public void PageForward()
+    // Link this to Button 2's OnClick event in the Inspector
+    public void AdvanceSlot2()
     {
-        if (currentIndex + 3 < allRecipes.Length)
+        if (allRecipes.Length == 0) return;
+
+        currentIndex2 = (currentIndex2 + 1);
+        if (currentIndex2 >= allRecipes.Length)
         {
-            currentIndex += 3;
-            UpdateRecipeDisplay();
+            currentIndex2 = currentIndex2 - allRecipes.Length;
         }
+        UpdateSingleSlot(1, currentIndex2);
     }
 
-    // Link this to your "Prev Arrow" UI Button OnClick event
-    public void PageBackward()
+    // Link this to Button 3's OnClick event in the Inspector
+    public void AdvanceSlot3()
     {
-        if (currentIndex - 3 >= 0)
+        if (allRecipes.Length == 0) return;
+
+        currentIndex3 = (currentIndex3 + 1);
+        if (currentIndex3 >= allRecipes.Length)
         {
-            currentIndex -= 3;
-            UpdateRecipeDisplay();
+            currentIndex3 = currentIndex3 - allRecipes.Length;
         }
+
+        UpdateSingleSlot(2, currentIndex3);
+    }
+
+    // Helper function to update just one specific slot on the screen
+    private void UpdateSingleSlot(int slotIndex, int recipeIndex)
+    {
+        slots[slotIndex].gameObject.SetActive(true);
+        slots[slotIndex].DisplayRecipe(allRecipes[recipeIndex]);
     }
 }
 
