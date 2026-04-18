@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 1d5bf125df7dacf4696327e370d21565
+guid: ef7ce34eb016e43c3bbf173403baa2fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8953108622875232570
-    second: boyama button_0
+      213: 7040346865362410759
+    second: Untitled_Artwork 7_0
   - first:
-      213: 4628530244590191624
-    second: boyama button_1
+      213: 818670419784383692
+    second: Untitled_Artwork 7_1
   - first:
-      213: 7955249098817960891
-    second: boyama button_2
+      213: 1336057323807977011
+    second: Untitled_Artwork 7_2
+  - first:
+      213: -2122701362205697609
+    second: Untitled_Artwork 7_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,12 +81,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 100
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -102,71 +105,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boyama button_0
+      name: Untitled_Artwork 7_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1368
-        width: 25
-        height: 98
+        x: 281
+        y: 286
+        width: 1485
+        height: 1485
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c6f802a42b20c380800000000000000
-      internalID: -8953108622875232570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boyama button_1
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 1132
-        width: 1055
-        height: 716
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 80443f40cb7db3040800000000000000
-      internalID: 4628530244590191624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boyama button_2
-      rect:
-        serializedVersion: 2
-        x: 1315
-        y: 1281
-        width: 6
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bbb7aca18e8b66e60800000000000000
-      internalID: 7955249098817960891
+      spriteID: 7b9dd7d8b56aa82e0800000000000000
+      internalID: -2122701362205697609
       vertices: []
       indices: 
       edges: []
@@ -175,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4f86e3262ee124b7797335a27a918da5
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +157,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boyama button_0: -8953108622875232570
-      boyama button_1: 4628530244590191624
-      boyama button_2: 7955249098817960891
+      Untitled_Artwork 7_0: 7040346865362410759
+      Untitled_Artwork 7_1: 818670419784383692
+      Untitled_Artwork 7_2: 1336057323807977011
+      Untitled_Artwork 7_3: -2122701362205697609
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

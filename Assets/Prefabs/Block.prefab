@@ -51,8 +51,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Block
   burstPrefab: {fileID: 7137109010782635332, guid: 5719a35a52f2e456ba8344c1de9712fb, type: 3}
-  shardSprite: {fileID: -1561811924251050893, guid: 0617dea826d494b478326b74400d1e9d, type: 3}
+  shardSprite: {fileID: 7234555176589446116, guid: 835e94813c29546d0a52a800a5cfbe77, type: 3}
   blockImage: {fileID: 757855185487272532}
+  spriteRed: {fileID: -8934737622119931021, guid: bfede4d60388c456a98a80ccd758c2d1, type: 3}
+  spriteGreen: {fileID: -7093643972573918368, guid: d2cd13ea08b8d4829bbde2f3ca391ef6, type: 3}
+  spriteBlue: {fileID: 2875839268500747256, guid: 3b6e0f656bd5c40a2a5053fb1d8f1712, type: 3}
+  spriteWhite: {fileID: 7234555176589446116, guid: 835e94813c29546d0a52a800a5cfbe77, type: 3}
   isActive: 0
 --- !u!222 &8896048090382976054
 CanvasRenderer:

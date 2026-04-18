@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 308cedf82dcc50a4886d5477144378d1
+guid: d8401d7a703344251897895a4821aafd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5472708214955781444
-    second: cutting board_0
+      213: 1535134168725310428
+    second: Untitled_Artwork 8_0
+  - first:
+      213: -4722583053419927751
+    second: Untitled_Artwork 8_1
+  - first:
+      213: 2130491720535272205
+    second: Untitled_Artwork 8_2
+  - first:
+      213: 1891558244348162027
+    second: Untitled_Artwork 8_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -53,7 +62,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -72,12 +81,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 100
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -113,23 +122,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cutting board_0
+      name: Untitled_Artwork 8_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1640
-        height: 2360
+        x: 288
+        y: 288
+        width: 1478
+        height: 1480
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb2d238cfd80d04b0800000000000000
-      internalID: -5472708214955781444
+      spriteID: bef655a833a204a10800000000000000
+      internalID: 1891558244348162027
       vertices: []
       indices: 
       edges: []
@@ -138,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c44f8b73ca3e64cf5a189d31fb3e1b4a
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +157,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cutting board_0: -5472708214955781444
+      Untitled_Artwork 8_0: 1535134168725310428
+      Untitled_Artwork 8_1: -4722583053419927751
+      Untitled_Artwork 8_2: 2130491720535272205
+      Untitled_Artwork 8_3: 1891558244348162027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

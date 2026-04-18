@@ -11,17 +11,23 @@ public enum BlockColors
     White
 }
 
-public class Block : MonoBehaviour,IPointerClickHandler
-{ [SerializeField] private GameObject burstPrefab; 
+public class Block : MonoBehaviour,IPointerClickHandler{
+    [Header("Effects")]
+    [SerializeField] private GameObject burstPrefab; 
     [SerializeField] private Sprite shardSprite;
+        
+    [Header("Visuals")]
     [SerializeField] private Image blockImage; 
-    
+    [SerializeField] private Sprite spriteRed;
+    [SerializeField] private Sprite spriteGreen;
+    [SerializeField] private Sprite spriteBlue;
+    [SerializeField] private Sprite spriteWhite;
+        
     private BlockColors color;
     public bool isActive;
     public BlockColors GetColor() => color;
 
-
-    public void SetColor(BlockColors newColor)
+public void SetColor(BlockColors newColor)
     {
         this.color = newColor; 
     
@@ -59,19 +65,21 @@ public class Block : MonoBehaviour,IPointerClickHandler
 
     private void ApplyVisualColor(BlockColors newColor)
     {
+        blockImage.color = Color.white; 
+
         switch (newColor)
         {
             case BlockColors.Red: 
-                blockImage.color = Color.red; 
+                blockImage.sprite = spriteRed; 
                 break;
             case BlockColors.Green: 
-                blockImage.color = Color.green; 
+                blockImage.sprite = spriteGreen; 
                 break;
             case BlockColors.Blue: 
-                blockImage.color = Color.blue; 
+                blockImage.sprite = spriteBlue; 
                 break;
             case BlockColors.White: 
-                blockImage.color = Color.white; 
+                blockImage.sprite = spriteWhite; 
                 break;
         }
     }
@@ -101,21 +109,23 @@ public class Block : MonoBehaviour,IPointerClickHandler
     }
     
 
-public void BreakBlock() 
-{
-    if (!isActive) return; 
-
-    isActive = false;
-    if (burstPrefab != null)
+    public void BreakBlock() 
     {
-        GameObject burstObj = Instantiate(burstPrefab, transform.parent);
-        burstObj.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-        burstObj.GetComponent<UIParticleBurst>().Play(blockImage.color,shardSprite);
-    }
-    blockImage.color = new Color(0, 0, 0, 0); 
-    blockImage.raycastTarget = true; 
-}
+        if (!isActive) return; 
 
+        isActive = false;
+        if (burstPrefab != null)
+        {
+            GameObject burstObj = Instantiate(burstPrefab, transform.parent);
+            burstObj.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            
+            Color particleColor = GetColorValue(color);
+            burstObj.GetComponent<UIParticleBurst>().Play(particleColor, shardSprite);
+        }
+
+        blockImage.color = new Color(0, 0, 0, 0); 
+        blockImage.raycastTarget = true; 
+    }
     public void RestoreBlock() 
     {
         isActive = true;
@@ -158,5 +168,16 @@ public void BreakBlock()
         }
 
         rt.localScale = Vector3.zero;
+    }
+
+    private Color GetColorValue(BlockColors c)
+    {
+        return c switch
+        {
+            BlockColors.Red => new Color(1f, 0.4f, 0.7f), 
+            BlockColors.Green => Color.green,
+            BlockColors.Blue => Color.blue,
+            _ => Color.white
+        };
     }
 }

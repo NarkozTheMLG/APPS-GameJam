@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 308cedf82dcc50a4886d5477144378d1
+guid: 1d5bf125df7dacf4696327e370d21565
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5472708214955781444
-    second: cutting board_0
+      213: -8953108622875232570
+    second: boyama button_0
+  - first:
+      213: 4628530244590191624
+    second: boyama button_1
+  - first:
+      213: 7955249098817960891
+    second: boyama button_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -53,7 +59,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -72,12 +78,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 100
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -113,23 +119,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cutting board_0
+      name: boyama button_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1640
-        height: 2360
+        x: 264
+        y: 1132
+        width: 1055
+        height: 716
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb2d238cfd80d04b0800000000000000
-      internalID: -5472708214955781444
+      spriteID: 80443f40cb7db3040800000000000000
+      internalID: 4628530244590191624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boyama button_2
+      rect:
+        serializedVersion: 2
+        x: 1315
+        y: 1281
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbb7aca18e8b66e60800000000000000
+      internalID: 7955249098817960891
       vertices: []
       indices: 
       edges: []
@@ -138,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 238742cefba32424c8cb8cc204b7818c
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +176,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cutting board_0: -5472708214955781444
+      boyama button_0: -8953108622875232570
+      boyama button_1: 4628530244590191624
+      boyama button_2: 7955249098817960891
+      boyama button_3: 1613799573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

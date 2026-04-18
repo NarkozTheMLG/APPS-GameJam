@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 308cedf82dcc50a4886d5477144378d1
+guid: 7534955734a31c543a718404ca87b2ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5472708214955781444
-    second: cutting board_0
+      213: -2884937349978714345
+    second: add block button_0
+  - first:
+      213: 6878799025931701592
+    second: add block button_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -53,7 +56,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -72,12 +75,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 100
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -113,23 +116,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cutting board_0
+      name: add block button_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1640
-        height: 2360
+        x: 257
+        y: 1106
+        width: 1071
+        height: 745
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cb2d238cfd80d04b0800000000000000
-      internalID: -5472708214955781444
+      spriteID: 690057ad441074a83a01b3e51e1f0329
+      internalID: -324850532
       vertices: []
       indices: 
       edges: []
@@ -138,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: edef05ee77f7d4217ab6ca0cb1c9e5d8
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +149,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      cutting board_0: -5472708214955781444
+      add block button_0: -2884937349978714345
+      add block button_1: 6878799025931701592
+      add block button_10: 962233761
+      add block button_11: -227925179
+      add block button_2: -324850532
+      add block button_3: 1589018057
+      add block button_4: -791854439
+      add block button_5: 704362861
+      add block button_6: -340474882
+      add block button_7: 1675181878
+      add block button_8: 526475283
+      add block button_9: -2085681935
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

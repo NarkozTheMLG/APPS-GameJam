@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 308cedf82dcc50a4886d5477144378d1
+guid: 835e94813c29546d0a52a800a5cfbe77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5472708214955781444
-    second: cutting board_0
+      213: 7234555176589446116
+    second: colorless block_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,12 +72,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 100
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cutting board_0
+      name: colorless block_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1640
-        height: 2360
+        x: 168
+        y: 532
+        width: 1303
+        height: 1297
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb2d238cfd80d04b0800000000000000
-      internalID: -5472708214955781444
+      spriteID: 4ebc3905a9d466460800000000000000
+      internalID: 7234555176589446116
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cutting board_0: -5472708214955781444
+      colorless block_0: 7234555176589446116
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
