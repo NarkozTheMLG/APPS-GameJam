@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -33.3, y: -98.9}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4395271457342578053
 CanvasRenderer:
@@ -105,10 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b779fa2cb1cfa574fa532958b5d631db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipitDataManager
-  allRecipes:
-  - {fileID: 11400000, guid: 350f8976dabf5e742ba1769b11e83a49, type: 2}
-  - {fileID: 11400000, guid: 59e9e5a157a89564790907ce3c0e3c15, type: 2}
-  - {fileID: 11400000, guid: 471dc28e0f172394fad72272b392fe12, type: 2}
   slots:
   - {fileID: 0}
   - {fileID: 0}

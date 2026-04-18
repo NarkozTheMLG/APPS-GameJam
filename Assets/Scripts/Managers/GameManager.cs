@@ -5,8 +5,14 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance { get; private set; }
+
     [Header("Timer Display")]
     public TextMeshProUGUI TimerText;
+
+    [Header("Customer Ratio Display")]
+    public TextMeshProUGUI CustomerRatio;
+
+
 
     [Header("All Ingredients for Ingredient Notes")]
     public IngredientData[] allIngredients;
@@ -54,6 +60,8 @@ public class GameManager : MonoBehaviour
         float currentTimer = GameManager.Instance.timeRemaining;
         int displaySeconds = Mathf.CeilToInt(currentTimer);
         TimerText.text = "Time Left: " + displaySeconds.ToString();
+
+        CustomerRatio.text = "" + (int) CurrentOrderIndex / OrderedRecepies.Length + " / " + OrderedRecepies.Length;
 
         if (timeRemaining <= 0)
         {
