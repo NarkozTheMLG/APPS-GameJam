@@ -7,6 +7,7 @@ public struct LevelData
 {
     public Recipe[] OrderedRecipes;
     public float TimeLimit;
+    public Sprite LevelTable;
 }
 
 public class GameManager : MonoBehaviour

@@ -7,7 +7,8 @@ public class EnteryPageManager : MonoBehaviour
     public static EnteryPageManager Instance { get; private set; }
 
     [Header("Callender for currentLevel")]
-    public TextMeshProUGUI CurretnLevel;
+    //public TextMeshProUGUI CurretnLevel;
+    public Image CurrentLevelCallender;
 
 
     [Header("Hart Objects")]
@@ -18,7 +19,7 @@ public class EnteryPageManager : MonoBehaviour
 
     void Start()
     {
-        CurretnLevel.text = "" + GameManager.Instance.CurrentLevel;
+        CurrentLevelCallender.sprite = GameManager.Instance.AllLevelDatas[GameManager.Instance.CurrentLevel - 1].LevelTable;
     }
 
     private void Update()
