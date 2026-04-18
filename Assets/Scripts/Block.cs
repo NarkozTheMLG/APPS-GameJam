@@ -12,7 +12,8 @@ public enum BlockColors
 }
 
 public class Block : MonoBehaviour,IPointerClickHandler
-{
+{ [SerializeField] private GameObject burstPrefab; 
+    [SerializeField] private Sprite shardSprite;
     [SerializeField] private Image blockImage; 
     
     private BlockColors color;
@@ -88,23 +89,74 @@ public class Block : MonoBehaviour,IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!isActive) return;
+        if (!isActive)
+        {
+            if (SpellManager.Instance.currentSpell == WizardSpells.Create)
+            {
+                SpellManager.Instance.castASpell(GridX, GridY);
+            }
+            return;
+        }
         SpellManager.Instance.castASpell(GridX, GridY);
     }
-    public void BreakBlock() 
-    {
-        isActive = false;
-        blockImage.enabled = false; 
-        
-        blockImage.raycastTarget = false;
+    
 
+public void BreakBlock() 
+{
+    if (!isActive) return; 
+
+    isActive = false;
+    if (burstPrefab != null)
+    {
+        GameObject burstObj = Instantiate(burstPrefab, transform.parent);
+        burstObj.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        burstObj.GetComponent<UIParticleBurst>().Play(blockImage.color,shardSprite);
     }
+    blockImage.color = new Color(0, 0, 0, 0); 
+    blockImage.raycastTarget = true; 
+}
 
     public void RestoreBlock() 
     {
         isActive = true;
-        blockImage.enabled = true;
         blockImage.raycastTarget = true;
-        
+    
+        SetColor(BlockColors.White); 
+    }
+    
+    
+    public void ThanosDisappear()
+    {
+        isActive = false;
+        StopAllCoroutines();
+        StartCoroutine(AnimateSnap());
+    }
+
+    private IEnumerator AnimateSnap()
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        float duration = 0.5f;
+        float elapsed = 0f;
+    
+        Vector3 targetScale = new Vector3(1.4f, 1.4f, 1.4f);
+    
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            if (t < 0.2f) 
+                rt.localScale = Vector3.Lerp(Vector3.one, targetScale, t / 0.2f);
+            else 
+                rt.localScale = Vector3.Lerp(targetScale, Vector3.zero, (t - 0.2f) / 0.8f);
+
+            Color c = blockImage.color;
+            c.a = Mathf.Lerp(1f, 0f, t);
+            blockImage.color = c;
+
+            yield return null;
+        }
+
+        rt.localScale = Vector3.zero;
     }
 }

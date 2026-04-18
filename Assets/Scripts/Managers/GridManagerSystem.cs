@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections; // THIS IS THE MISSING LINE
+using System.Collections; 
 using System.Collections.Generic;
 
 public class GridManagerSystem : MonoBehaviour
@@ -11,7 +11,7 @@ public class GridManagerSystem : MonoBehaviour
 
     
     private const int ROWSIZE = 9;
-    private const int COLUMNSIZE = 12;
+    private const int COLUMNSIZE = 10;
 
     [Header("Settings")]
     [SerializeField] private GameObject blockPrefab;
@@ -19,18 +19,17 @@ public class GridManagerSystem : MonoBehaviour
     [SerializeField] private float spacing = 5f;
 
     public static Block[,] Grids = new Block[ROWSIZE, COLUMNSIZE];
-
+    [SerializeField] private GameObject spellButtonPrefab;
+    public static SpellButton[] ColumnButtons = new SpellButton[ROWSIZE];
+    public static SpellButton[] RowButtons = new SpellButton[COLUMNSIZE];
     private void Awake()
     {
         Instance = this;
         GenerateGrid();
     }
-    [SerializeField] private GameObject spellButtonPrefab;
-    public static SpellButton[] ColumnButtons = new SpellButton[ROWSIZE];
-    public static SpellButton[] RowButtons = new SpellButton[COLUMNSIZE];
+
     private void SpawnSideButtons(float startX, float startY, float cellSize)
     {
-        // Spawn Top Buttons (Columns)
         for (int i = 0; i < ROWSIZE; i++)
         {
             GameObject btn = Instantiate(spellButtonPrefab, transform);
@@ -38,7 +37,7 @@ public class GridManagerSystem : MonoBehaviour
             rt.anchorMin = rt.anchorMax = rt.pivot = Vector2.zero;
 
             float xPos = startX + (i * cellSize);
-            float yPos = startY + (COLUMNSIZE * cellSize) + 20f; // 20px above grid
+            float yPos = startY + (COLUMNSIZE * cellSize) + 20f; 
 
             rt.anchoredPosition = new Vector2(xPos, yPos);
             rt.sizeDelta = new Vector2(cellSize, cellSize);
@@ -48,14 +47,13 @@ public class GridManagerSystem : MonoBehaviour
             ColumnButtons[i] = script;
         }
 
-        // Spawn Left Buttons (Rows)
         for (int j = 0; j < COLUMNSIZE; j++)
         {
             GameObject btn = Instantiate(spellButtonPrefab, transform);
             RectTransform rt = btn.GetComponent<RectTransform>();
             rt.anchorMin = rt.anchorMax = rt.pivot = Vector2.zero;
 
-            float xPos = startX - cellSize - 20f; // 20px to the left
+            float xPos = startX - cellSize - 20f; 
             float yPos = startY + (j * cellSize);
 
             rt.anchoredPosition = new Vector2(xPos, yPos);
@@ -112,19 +110,35 @@ public class GridManagerSystem : MonoBehaviour
 
     public void BreakRow(int y)
     {
+        StartCoroutine(AnimateRowBreak(y));
+    }
+
+    private IEnumerator AnimateRowBreak(int y)
+    {
         for (int i = 0; i < ROWSIZE; i++)
         {
             if (IsInsideGrid(i, y) && Grids[i, y].isActive)
+            {
                 Grids[i, y].BreakBlock();
+                yield return new WaitForSeconds(0.03f); 
+            }
         }
     }
 
     public void BreakColumn(int x)
     {
-        for (int j = 0; j < COLUMNSIZE; j++)
+        StartCoroutine(AnimateColumnBreak(x));
+    }
+
+    private IEnumerator AnimateColumnBreak(int x)
+    {
+        for (int j = COLUMNSIZE; j >= 0; j--)
         {
             if (IsInsideGrid(x, j) && Grids[x, j].isActive)
+            {
                 Grids[x, j].BreakBlock();
+                yield return new WaitForSeconds(0.03f);
+            }
         }
     }
 
@@ -132,7 +146,6 @@ public class GridManagerSystem : MonoBehaviour
     {
         if (!IsInsideGrid(x, y) || !Grids[x, y].isActive) return;
     
-        // Stop any paint currently in progress to avoid conflicts
         StopAllCoroutines();
         StartCoroutine(AnimatedFloodFill(x, y, newColor));
     }
@@ -145,7 +158,6 @@ public class GridManagerSystem : MonoBehaviour
         Queue<Vector2Int> nodes = new Queue<Vector2Int>();
         nodes.Enqueue(new Vector2Int(x, y));
 
-        // Keep track of visited blocks so we don't paint the same one twice
         HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
         visited.Add(new Vector2Int(x, y));
 
@@ -153,12 +165,9 @@ public class GridManagerSystem : MonoBehaviour
         {
             Vector2Int current = nodes.Dequeue();
             Block block = Grids[current.x, current.y];
-
-            // Paint the block and trigger its scale animation
+            
             block.SetColor(newColor);
 
-            // --- THE "LIFE" DELAY ---
-            // Change 0.02f to make it faster or slower
             yield return new WaitForSeconds(0.02f); 
 
             Vector2Int[] neighbors = {
@@ -183,6 +192,59 @@ public class GridManagerSystem : MonoBehaviour
         }
     }
 
+    public void ThanosSnapAll()
+    {
+        StartCoroutine(SnapSequence());
+    }
+    private IEnumerator SnapSequence()
+    {
+        yield return StartCoroutine(SnapSpread(Random.Range(0,ROWSIZE), Random.Range(0,COLUMNSIZE)));
+        yield return new WaitForSeconds(0.25f); 
+        GenerateGrid();
+    }
+    private IEnumerator SnapSpread(int startX, int startY)
+    {
+        Queue<Vector2Int> nodes = new Queue<Vector2Int>();
+        HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
+
+        nodes.Enqueue(new Vector2Int(startX, startY));
+        visited.Add(new Vector2Int(startX, startY));
+
+        while (nodes.Count > 0)
+        {
+            int count = nodes.Count;
+        
+            for (int i = 0; i < count; i++)
+            {
+                Vector2Int current = nodes.Dequeue();
+                Block block = Grids[current.x, current.y];
+
+                if (block.isActive)
+                {
+                    block.ThanosDisappear();
+                }
+
+                Vector2Int[] neighbors = {
+                    new Vector2Int(current.x + 1, current.y),
+                    new Vector2Int(current.x - 1, current.y),
+                    new Vector2Int(current.x, current.y + 1),
+                    new Vector2Int(current.x, current.y - 1)
+                };
+
+                foreach (var next in neighbors)
+                {
+                    if (IsInsideGrid(next.x, next.y) && !visited.Contains(next))
+                    {
+                        visited.Add(next);
+                        nodes.Enqueue(next);
+                    }
+                }
+            }
+            yield return new WaitForSeconds(0.05f); 
+        }
+    }
+    
+    
     private bool IsInsideGrid(int x, int y)
     {
         return (x >= 0 && x < ROWSIZE && y >= 0 && y < COLUMNSIZE);

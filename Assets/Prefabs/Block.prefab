@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f55b1f4b90c74c16b2e4934d7a241a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Block
+  burstPrefab: {fileID: 7137109010782635332, guid: 5719a35a52f2e456ba8344c1de9712fb, type: 3}
+  shardSprite: {fileID: -1561811924251050893, guid: 0617dea826d494b478326b74400d1e9d, type: 3}
   blockImage: {fileID: 757855185487272532}
   isActive: 0
 --- !u!222 &8896048090382976054
