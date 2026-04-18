@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class TutorialSequence : MonoBehaviour
 {
@@ -9,25 +10,45 @@ public class TutorialSequence : MonoBehaviour
     public GameObject refresh;
     public GameObject breakSingle;
 
-    //TODO
-    [Header("points to press")]
-    public GameObject point1;
+    // NEW: Add a slot for your Grid Canvas so we can highlight it
+    [Header("Gameplay Elements")]
+    public GameObject gridCanvas;
 
-    // Call this when the level starts
+    private bool isTransitioning = false;
+
     void Start()
     {
-        // Start Step 1
-        TutorialManager.Instance.StartTutorialStep(breakSingle, "Click here to break a block!");
+        // 1. Point at the spell button
+        TutorialManager.Instance.StartTutorialStep(breakSingle, "Select the Break Spell!");
     }
 
-    // Call this from the Real Move Button's OnClick event
-    public void OnPlayerMoved()
+    // --- TRIGGERED BY THE UI BUTTON ---
+    public void OnSpellSelected()
     {
-        TutorialManager.Instance.EndTutorialStep(breakSingle);
+        if (isTransitioning) return;
 
-        // Start Step 2 immediately (or you can wait for a trigger)
-        TutorialManager.Instance.StartTutorialStep(create, "Click here to create a block!");
+        // 2. Point at the grid! 
+        TutorialManager.Instance.StartTutorialStep(gridCanvas, "Now click on a block to break it!");
     }
 
-    //TODO CONTINUE
+    // --- TRIGGERED BY YOUR GRID DETECTOR ---
+    public void OnGridActionCompleted()
+    {
+        if (isTransitioning) return;
+
+        // Start the timer to let the spell animation play
+        StartCoroutine(WaitAndShowCreateStep());
+    }
+
+    private IEnumerator WaitAndShowCreateStep()
+    {
+        isTransitioning = true;
+        TutorialManager.Instance.EndTutorialStep(gridCanvas);
+
+        // Wait for the spell animation (breaking, painting, or creating)
+        yield return new WaitForSeconds(1f);
+
+        TutorialManager.Instance.StartTutorialStep(create, "Great! Now select the Create Spell!");
+        isTransitioning = false;
+    }
 }
