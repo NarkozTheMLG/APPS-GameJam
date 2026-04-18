@@ -55,6 +55,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IngredientData[] getEnabledIngredients() {
+        int counter = 0;
+        for (int i = 0; i < allIngredients.Length; i++)
+        {
+            if (allIngredients[i].ingredientEnabled)
+            {
+                counter++;
+            }
+        }
+
+        IngredientData[] result = new IngredientData[counter];
+
+        int index = 0;
+        for (int i = 0; i < allIngredients.Length; i++) {
+            if (allIngredients[i].ingredientEnabled)
+            {
+                result[index] = allIngredients[i];
+            }
+        }
+        return result;
+    }
+
     private void Update()
     {
         // there are some emoty harts

@@ -70,7 +70,7 @@ public class SpellBootSlotDataManager : MonoBehaviour
     {
         if (isAnimating) return;
 
-        if (currentPage == 0) {
+        if (currentPage > 0) {
             forward.gameObject.SetActive(true);
             currentPage--;
             if (currentPage == 0)

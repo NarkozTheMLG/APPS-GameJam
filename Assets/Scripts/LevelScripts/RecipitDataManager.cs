@@ -17,14 +17,7 @@ public class RecipitDataManager : MonoBehaviour
     void Start()
     {
         // show just the enabled ingredients
-        IngredientData[] temp = GameManager.Instance.allIngredients;
-        int index = 0;
-        for (int i = 0; i < temp.Length; i++) {
-            if (temp[i].ingredientEnabled)
-            {
-                data[index++] = temp[i];
-            }
-        }
+        data = GameManager.Instance.getEnabledIngredients();
 
         if (data.Length > 0) UpdateSingleSlot(0, currentIndex1);
         if (data.Length > 1) UpdateSingleSlot(1, currentIndex2);

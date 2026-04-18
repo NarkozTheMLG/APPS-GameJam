@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4395271457342578053}
   - component: {fileID: 4651816584476858}
   - component: {fileID: 3893886578150081287}
-  - component: {fileID: -848847104886077015}
   m_Layer: 5
   m_Name: RepitNote
   m_TagString: RepitNote
@@ -93,22 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipitNoteManager
   shapeDisplay: {fileID: 0}
   ingredientDisplay: {fileID: 0}
---- !u!114 &-848847104886077015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2781793537842507422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b779fa2cb1cfa574fa532958b5d631db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RecipitDataManager
-  slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &5363438532198413618
 GameObject:
   m_ObjectHideFlags: 0

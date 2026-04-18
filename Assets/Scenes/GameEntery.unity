@@ -1494,6 +1494,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 951eaa065810d074794e6354d5c5880d, type: 2}
   - {fileID: 11400000, guid: 471dc28e0f172394fad72272b392fe12, type: 2}
   - {fileID: 11400000, guid: 6cbfe2bf63e2c93439783c0fc3966929, type: 2}
+  - {fileID: 11400000, guid: 350f8976dabf5e742ba1769b11e83a49, type: 2}
+  - {fileID: 11400000, guid: deebb65f3ba51f34ba2b52f85a304f53, type: 2}
+  - {fileID: 11400000, guid: 2d6504529dce24046943f21a56019b2e, type: 2}
+  - {fileID: 11400000, guid: 6ff091abc56612049a7fc7987e5da7f1, type: 2}
+  - {fileID: 11400000, guid: 05cd3568cccd8b643a107a75c8c0d167, type: 2}
+  - {fileID: 11400000, guid: abf6646c1b6c6364a860b5479f2f8a17, type: 2}
   CurrentLevel: 3
   TotalHartNumber: 3
   WaitTimeForHart: 20
