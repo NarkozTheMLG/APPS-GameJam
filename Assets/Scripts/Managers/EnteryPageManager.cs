@@ -38,4 +38,8 @@ public class EnteryPageManager : MonoBehaviour
     {
         GameManager.Instance.LoadLevel();
     }
+
+    public void LoadSpellBook() {
+        GameManager.Instance.LoadSpellBook();
+    }
 }

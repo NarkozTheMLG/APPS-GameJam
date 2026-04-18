@@ -92,6 +92,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void LoadSpellBook() {
+        SceneManager.LoadScene("SpellBookScene");
+    }
+
+    public void ReturnEnteryScene() {
+        SceneManager.LoadScene("GameEntery");
+    }
+
     public void CloseLevelWin()
     {
         CurrentLevel++;

@@ -9,7 +9,14 @@ public class RecipitNoteManager : MonoBehaviour
     // This function fills the UI with the data from the ScriptableObject
     public void DisplayRecipe(IngredientData data)
     {
-        shapeDisplay.sprite = data.IngredientImage;
-        ingredientDisplay.sprite = data.ingredientBlock;
+        if (data.ingredientEnabled)
+        {
+            shapeDisplay.sprite = data.IngredientImage;
+            ingredientDisplay.sprite = data.ingredientBlock;
+        }
+        else {
+            shapeDisplay.sprite = data.notAvailableIngredientImage;
+            ingredientDisplay.sprite = data.notAvailableIngredientBlockImage;
+        }
     }
 }
