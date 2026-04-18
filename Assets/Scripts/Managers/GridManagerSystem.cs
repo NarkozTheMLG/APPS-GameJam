@@ -8,10 +8,8 @@ public class GridManagerSystem : MonoBehaviour
     
     public static GridManagerSystem Instance; 
 
-
-    
-    private const int ROWSIZE = 9;
-    private const int COLUMNSIZE = 10;
+    public const int ROWSIZE = 9;
+    public const int COLUMNSIZE = 10;
 
     [Header("Settings")]
     [SerializeField] private GameObject blockPrefab;
@@ -34,13 +32,17 @@ public class GridManagerSystem : MonoBehaviour
         {
             GameObject btn = Instantiate(spellButtonPrefab, transform);
             RectTransform rt = btn.GetComponent<RectTransform>();
-            rt.anchorMin = rt.anchorMax = rt.pivot = Vector2.zero;
+    
+            rt.anchorMin = rt.anchorMax = Vector2.zero;
+            rt.pivot = new Vector2(0.5f, 0.5f);
 
-            float xPos = startX + (i * cellSize);
-            float yPos = startY + (COLUMNSIZE * cellSize) + 20f; 
+            float xPos = startX + (i * cellSize) + (cellSize / 2f);
+            float yPos = startY + (COLUMNSIZE * cellSize) + 20f + (cellSize / 2f); 
 
             rt.anchoredPosition = new Vector2(xPos, yPos);
             rt.sizeDelta = new Vector2(cellSize, cellSize);
+
+            rt.localEulerAngles = new Vector3(0, 0, -90f);
 
             SpellButton script = btn.GetComponent<SpellButton>();
             script.Init(i, true, cellSize);
@@ -98,6 +100,7 @@ public class GridManagerSystem : MonoBehaviour
             }
         }
         SpawnSideButtons(startX, startY, cellSize);
+        SpellManager.Instance.UpdateArrowVisibility();
     }
     
     public void BreakSingle(int x, int y)
@@ -105,6 +108,7 @@ public class GridManagerSystem : MonoBehaviour
         if (IsInsideGrid(x, y) && Grids[x, y].isActive)
         {
             Grids[x, y].BreakBlock();
+            SpellManager.Instance.UpdateArrowVisibility();
         }
     }
 
@@ -121,6 +125,7 @@ public class GridManagerSystem : MonoBehaviour
             {
                 Grids[i, y].BreakBlock();
                 yield return new WaitForSeconds(0.03f); 
+                SpellManager.Instance.UpdateArrowVisibility();
             }
         }
     }
@@ -138,6 +143,7 @@ public class GridManagerSystem : MonoBehaviour
             {
                 Grids[x, j].BreakBlock();
                 yield return new WaitForSeconds(0.03f);
+                SpellManager.Instance.UpdateArrowVisibility();
             }
         }
     }
@@ -186,6 +192,7 @@ public class GridManagerSystem : MonoBehaviour
                     {
                         visited.Add(next);
                         nodes.Enqueue(next);
+                        SpellManager.Instance.UpdateArrowVisibility();
                     }
                 }
             }
