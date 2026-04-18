@@ -1,130 +1,142 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
+[System.Serializable]
+public struct LevelData
+{
+    public Recipe[] OrderedRecipes;
+    public float TimeLimit;
+}
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager Instance { get; private set; }
 
-    [Header("Timer Display")]
-    public TextMeshProUGUI TimerText;
-
-    [Header("Customer Ratio Display")]
-    public TextMeshProUGUI CustomerRatio;
-
-
-
-    [Header("All Ingredients for Ingredient Notes")]
     public IngredientData[] allIngredients;
+    public int CurrentLevel;
 
-    [Header("Level Settings")]
-    public Recipe[] OrderedRecepies;
-    public float levelTimeLimit = 300f; // 5 minutes in seconds
+    [Header("Hart System")]
+    public int TotalHartNumber;
+    public float WaitTimeForHart;
+    [Header("DO NOT TOUCH")]
+    public int AvailableHart;
+    
 
-    [Header("Live Data (Don't touch in Inspector)")]
-    public int CurrentOrderIndex = 0;
-    public int currentIngredientIndex = 0; // Tracks which of the 3 ingredients the player is carving
-    public float timeRemaining;
-    public bool isGameActive = false;
+
+    [Header("DO NOT TOUCH")]
+    public float timeLeftForNextHart;
+    
+
+    [Header("Level info")]
+    public LevelData[] AllLevelDatas;
+
 
     private void Awake()
     {
-        // Set up the Singleton safely
-        if (Instance == null) { Instance = this; }
-        else { Destroy(gameObject); }
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            CurrentLevel = 1;
+            AvailableHart = 3;
+
+            if (WaitTimeForHart <= 0) {
+                WaitTimeForHart = 50;
+            }
+
+            if (TotalHartNumber <= 0) {
+                TotalHartNumber = 3;
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void Start()
-    {
-        StartLevel();
-    }
+    public IngredientData[] getEnabledIngredients() {
+        int counter = 0;
+        for (int i = 0; i < allIngredients.Length; i++)
+        {
+            if (allIngredients[i].ingredientEnabled)
+            {
+                counter++;
+            }
+        }
 
-    public void StartLevel()
-    {
-        timeRemaining = levelTimeLimit;
-        CurrentOrderIndex = 0;
-        currentIngredientIndex = 0;
-        isGameActive = true;
+        IngredientData[] result = new IngredientData[counter];
 
-        LoadCustomerOrder();
+        int index = 0;
+        for (int i = 0; i < allIngredients.Length; i++) {
+            if (allIngredients[i].ingredientEnabled)
+            {
+                result[index] = allIngredients[i];
+                index++;
+            }
+        }
+        return result;
     }
 
     private void Update()
     {
-        if (!isGameActive) return;
+        // there are some emoty harts
+        if (AvailableHart < TotalHartNumber) {
+            // start the timer for a hart
+            if (timeLeftForNextHart <= 0)
+            {
+                timeLeftForNextHart = WaitTimeForHart;
+            }
 
-        // Count down the global timer
-        timeRemaining -= Time.deltaTime;
-
-
-        float currentTimer = GameManager.Instance.timeRemaining;
-        int displaySeconds = Mathf.CeilToInt(currentTimer);
-        TimerText.text = "Time Left: " + displaySeconds.ToString();
-
-        CustomerRatio.text = "" + (int) CurrentOrderIndex / OrderedRecepies.Length + " / " + OrderedRecepies.Length;
-
-        if (timeRemaining <= 0)
-        {
-            TriggerGameOver();
+            // continue the previous timer
+            else {
+                timeLeftForNextHart = timeLeftForNextHart - Time.deltaTime;
+                // now one hart completed its time
+                if (timeLeftForNextHart <= 0)
+                {
+                    AvailableHart++;
+                }
+            }
         }
     }
 
-    public void LoadCustomerOrder()
+    public void LoadLevel()
     {
-        if (CurrentOrderIndex >= OrderedRecepies.Length)
-        {
-            TriggerWin();
-            return;
+        // TODO if there is no harts spawn a warning
+        if (AvailableHart > 0) {
+            if (CurrentLevel > AllLevelDatas.Length)
+            {
+                // All Levels are done
+                CurrentLevel = AllLevelDatas.Length;
+            }
+
+            SceneManager.LoadScene("Level_1");
         }
 
-        Recipe currentFood = OrderedRecepies[CurrentOrderIndex];
-        //IngredientData currentTarget = currentFood.ingredientsNeeded[currentIngredientIndex];
-
-        // TODO: Tell the UI to show this food
-        if (OrderUIManager.Instance != null)
-        {
-            OrderUIManager.Instance.UpdateDisplay(currentFood.FoodSprite, currentFood.ingredientsNeeded);
-        }
-
-        // TODO: Tell the GridManager to check against this specific ingredient shape
     }
 
-    // The Grid Manager will call this function when the player successfully carves a shape!
-    public void OnShapeCarvedSuccessfully()
-    {
-
-        //TODO FIX THIS PART
-
-        /*
-        currentIngredientIndex++;
-
-        // Did we finish all 3 ingredients for this food?
-        if (currentIngredientIndex >= 3)
-        {
-            Debug.Log("Meal complete! Next customer coming up.");
-            CurrentOrderIndex++;
-            currentIngredientIndex = 0; // Reset back to the first ingredient
-            LoadCustomerOrder();
-        }
-        else
-        {
-            Debug.Log("Ingredient done! Moving to ingredient " + (currentIngredientIndex + 1));
-            LoadCustomerOrder();
-        }
-        */
+    public void LoadSpellBook() {
+        SceneManager.LoadScene("SpellBookScene");
     }
 
-    private void TriggerGameOver()
-    {
-        // TODO TRANSECXT TO MAIN PAGE
-        isGameActive = false;
-        Debug.Log("TIME IS UP! GAME OVER.");
+    public void ReturnEnteryScene() {
+        SceneManager.LoadScene("GameEntery");
     }
 
-    private void TriggerWin()
+    public void CloseLevelWin()
     {
-        // TODO TRANSECXT TO MAIN PAGE
-        isGameActive = false;
-        Debug.Log("LEVEL COMPLETE! All customers served.");
+        CurrentLevel++;
+        SceneManager.LoadScene("GameEntery");
+    }
+
+    public void CloseLevelLose()
+    {
+        AvailableHart--;
+        if (AvailableHart < 0)
+        {
+            AvailableHart = 0;
+        }
+
+        SceneManager.LoadScene("GameEntery");
     }
 }
