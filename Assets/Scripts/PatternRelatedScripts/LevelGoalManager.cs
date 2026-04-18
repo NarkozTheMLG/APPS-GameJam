@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelGoalManager : MonoBehaviour
 {
@@ -7,56 +8,73 @@ public class LevelGoalManager : MonoBehaviour
     [Header("The Level Goal")]
     public Recipe currentRecipe;
 
-    public IngredientData[] activeRecipes;
-    public bool[] isIngredientComplete;
+    [Header("Main UI Elements")]
+    public Image foodDisplayIcon; // The big image of the final dish
     
-    [Header("UI Indicator Boxes")]
-    public UnityEngine.UI.Image[] uiIndicatorBoxes= new UnityEngine.UI.Image[3];
-    public Color pendingColor = Color.red;
-    public Color completedColor = Color.green;
+    [Header("Ingredient UI Slots")]
+    public Image[] ingredientIcons;      // The 3 icons showing WHAT to make
+    public Image[] checkmarkStatusUI;    // The 3 icons showing IF it's done
+
+    [Header("Status Sprites")]
+    public Sprite pendingSprite;   // e.g., an empty box or red 'X'
+    public Sprite completedSprite; // e.g., a green checkmark
+
+    [HideInInspector] public IngredientData[] activeRecipes;
+    [HideInInspector] public bool[] isIngredientComplete;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
         InitializeLevel();
     }
 
     private void InitializeLevel()
     {
-        if (currentRecipe == null)
-        {
-            Debug.LogError("No Recipe assigned to LevelGoalManager!");
-            return;
-        }
+        if (currentRecipe == null) return;
+
+        if (foodDisplayIcon != null)
+            foodDisplayIcon.sprite = currentRecipe.FoodSprite;
 
         activeRecipes = currentRecipe.ingredientsNeeded;
         isIngredientComplete = new bool[activeRecipes.Length];
 
-        for (int i = 0; i < uiIndicatorBoxes.Length; i++)
+        for (int i = 0; i < ingredientIcons.Length; i++)
         {
             if (i < activeRecipes.Length)
             {
-                uiIndicatorBoxes[i].gameObject.SetActive(true);
-                uiIndicatorBoxes[i].color = pendingColor;
+                ingredientIcons[i].gameObject.SetActive(true);
+                checkmarkStatusUI[i].gameObject.SetActive(true);
+                
+                ingredientIcons[i].sprite = activeRecipes[i].IngredientImage;
+                checkmarkStatusUI[i].sprite = pendingSprite;
             }
             else
             {
-                uiIndicatorBoxes[i].gameObject.SetActive(false);
+                ingredientIcons[i].gameObject.SetActive(false);
+                checkmarkStatusUI[i].gameObject.SetActive(false);
             }
         }
     }
 
     public void IngredientMatched(int index)
     {
+        if (index < 0 || index >= isIngredientComplete.Length || index >= checkmarkStatusUI.Length) 
+            return;
+
         if (isIngredientComplete[index]) return;
 
         isIngredientComplete[index] = true;
-        Debug.Log("INDEX:"+index);
-        uiIndicatorBoxes[index].color = completedColor;
+        checkmarkStatusUI[index].sprite = completedSprite;
+
+        Debug.Log($"Checkmark updated for: {activeRecipes[index].ingredientName}");
 
         if (CheckAllDone())
         {
-            Debug.Log(currentRecipe.recipeName + " is ready!");
+            Debug.Log("LEVEL COMPLETE: " + currentRecipe.recipeName);
         }
     }
 

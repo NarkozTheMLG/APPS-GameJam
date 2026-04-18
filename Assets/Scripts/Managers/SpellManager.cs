@@ -75,6 +75,7 @@ public class SpellManager : MonoBehaviour
 
     public void castASpell(int xIndex, int yIndex)
     {
+        
         if (Time.time < nextReadyTime.GetValueOrDefault(currentSpell, 0)) return;
 
         if(currentSpell == WizardSpells.BreakSingle)
@@ -138,6 +139,7 @@ public class SpellManager : MonoBehaviour
         StartCoroutine(WaitAndScan());
     }
     
+    // BURAYA TUTORIAL YAP
     private System.Collections.IEnumerator WaitAndScan()
     {
         Debug.Log("Waiting for blocks");
