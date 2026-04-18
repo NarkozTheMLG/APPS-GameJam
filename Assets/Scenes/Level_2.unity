@@ -264,69 +264,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2306546208227444, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 209
-      objectReference: {fileID: 0}
-    - target: {fileID: 2306546208227444, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 444.99994
-      objectReference: {fileID: 0}
-    - target: {fileID: 973610481531213575, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973610481531213575, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -8101145853904440126, guid: ef106fe8768909a43aa4e9c4face65e3, type: 3}
-    - target: {fileID: 973610481531213575, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 973610481531213575, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_Color.b
-      value: 0.990566
-      objectReference: {fileID: 0}
-    - target: {fileID: 973610481531213575, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_Color.g
-      value: 0.990566
-      objectReference: {fileID: 0}
-    - target: {fileID: 973610481531213575, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_Color.r
-      value: 0.990566
-      objectReference: {fileID: 0}
     - target: {fileID: 4226467592307563956, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
       propertyPath: m_Name
       value: GamePlayTopUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289149778789075678, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289149778789075678, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289149778789075678, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289149778789075678, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 135.33998
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289149778789075678, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 372
-      objectReference: {fileID: 0}
-    - target: {fileID: 5289149778789075678, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6895978025066907077, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7759749565254392097, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
       propertyPath: m_Pivot.x
@@ -406,38 +346,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7759749565254392097, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969343811556856247, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 209
-      objectReference: {fileID: 0}
-    - target: {fileID: 8969343811556856247, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 445
-      objectReference: {fileID: 0}
-    - target: {fileID: 9059799737785340211, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 9059799737785340211, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9059799737785340211, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9059799737785340211, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -147.00002
-      objectReference: {fileID: 0}
-    - target: {fileID: 9059799737785340211, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 370
-      objectReference: {fileID: 0}
-    - target: {fileID: 9059799737785340211, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
-      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -650,10 +558,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GamePlayCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2638633869041024684, guid: 8eb6ca04577614a29ad1c4da1ce05431, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4046467330858727065, guid: 8eb6ca04577614a29ad1c4da1ce05431, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -733,14 +637,6 @@ PrefabInstance:
     - target: {fileID: 4046467330858727065, guid: 8eb6ca04577614a29ad1c4da1ce05431, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825281617503879342, guid: 8eb6ca04577614a29ad1c4da1ce05431, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1160
-      objectReference: {fileID: 0}
-    - target: {fileID: 9023575389185710932, guid: 8eb6ca04577614a29ad1c4da1ce05431, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

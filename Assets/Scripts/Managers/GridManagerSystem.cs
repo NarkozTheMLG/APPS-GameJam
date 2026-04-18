@@ -23,7 +23,12 @@ public class GridManagerSystem : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    void Start()
+    {
         GenerateGrid();
+        
     }
 
     private void SpawnSideButtons(float startX, float startY, float cellSize)

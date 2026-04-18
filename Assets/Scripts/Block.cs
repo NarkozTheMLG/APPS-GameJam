@@ -88,7 +88,7 @@ public void SetColor(BlockColors newColor)
 
     public void Init(int x, int y, float cellSize)
     {
-        color = BlockColors.Green;
+        color = BlockColors.White;
         SetColor(color);
         isActive = true;
         GridX = x;
@@ -131,7 +131,8 @@ public void SetColor(BlockColors newColor)
         isActive = true;
         blockImage.raycastTarget = true;
     
-        SetColor(BlockColors.White); 
+        color = BlockColors.White;
+        SetColor(color);
     }
     
     
