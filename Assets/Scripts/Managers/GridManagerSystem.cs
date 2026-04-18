@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections; // THIS IS THE MISSING LINE
+using System.Collections.Generic;
 
 public class GridManagerSystem : MonoBehaviour
 {
@@ -83,10 +85,11 @@ public class GridManagerSystem : MonoBehaviour
 
                 rt.anchorMin = Vector2.zero;
                 rt.anchorMax = Vector2.zero;
-                rt.pivot = Vector2.zero;
+            
+                rt.pivot = new Vector2(0.5f, 0.5f);
 
-                float xPos = startX + (i * cellSize);
-                float yPos = startY + (j * cellSize);
+                float xPos = startX + (i * cellSize) + (cellSize / 2f);
+                float yPos = startY + (j * cellSize) + (cellSize / 2f);
 
                 rt.anchoredPosition = new Vector2(xPos, yPos);
                 rt.sizeDelta = new Vector2(cellSize, cellSize);
@@ -128,25 +131,56 @@ public class GridManagerSystem : MonoBehaviour
     public void Paint(int x, int y, BlockColors newColor)
     {
         if (!IsInsideGrid(x, y) || !Grids[x, y].isActive) return;
-        FloodFill(x, y, newColor);
+    
+        // Stop any paint currently in progress to avoid conflicts
+        StopAllCoroutines();
+        StartCoroutine(AnimatedFloodFill(x, y, newColor));
     }
 
-    private void FloodFill(int x, int y, BlockColors newColor)
+    private IEnumerator AnimatedFloodFill(int x, int y, BlockColors newColor)
     {
-        Debug.Log("Flood Fill");
-        if (!IsInsideGrid(x, y)) return;
+        BlockColors targetColor = Grids[x, y].GetColor();
+        if (targetColor == newColor) yield break;
 
-        Block block = Grids[x, y];
+        Queue<Vector2Int> nodes = new Queue<Vector2Int>();
+        nodes.Enqueue(new Vector2Int(x, y));
 
-        if (!block.isActive || block.GetColor() == newColor) return;
-        
-        block.SetColor(newColor);
-        Debug.Log("Painting block at: " + x + "," + y);
+        // Keep track of visited blocks so we don't paint the same one twice
+        HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
+        visited.Add(new Vector2Int(x, y));
 
-        FloodFill(x + 1, y, newColor);
-        FloodFill(x - 1, y, newColor);
-        FloodFill(x, y + 1, newColor);
-        FloodFill(x, y - 1, newColor);
+        while (nodes.Count > 0)
+        {
+            Vector2Int current = nodes.Dequeue();
+            Block block = Grids[current.x, current.y];
+
+            // Paint the block and trigger its scale animation
+            block.SetColor(newColor);
+
+            // --- THE "LIFE" DELAY ---
+            // Change 0.02f to make it faster or slower
+            yield return new WaitForSeconds(0.02f); 
+
+            Vector2Int[] neighbors = {
+                new Vector2Int(current.x + 1, current.y),
+                new Vector2Int(current.x - 1, current.y),
+                new Vector2Int(current.x, current.y + 1),
+                new Vector2Int(current.x, current.y - 1)
+            };
+
+            foreach (var next in neighbors)
+            {
+                if (IsInsideGrid(next.x, next.y) && !visited.Contains(next))
+                {
+                    Block nextBlock = Grids[next.x, next.y];
+                    if (nextBlock.isActive && nextBlock.GetColor() == targetColor)
+                    {
+                        visited.Add(next);
+                        nodes.Enqueue(next);
+                    }
+                }
+            }
+        }
     }
 
     private bool IsInsideGrid(int x, int y)
