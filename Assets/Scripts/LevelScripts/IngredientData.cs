@@ -10,5 +10,12 @@ public class IngredientData : ScriptableObject
     public Sprite notAvailableIngredientImage;
     public Sprite notAvailableIngredientBlockImage;
     public bool ingredientEnabled;
-    public bool[] blueprint = new bool[81];
+    
+    [SerializeField]
+    public bool[,] grid = 
+    {
+        { true,  false, true },
+        { false, true,  false },
+        { true,  false, true }
+    };    
 }
