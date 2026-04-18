@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
             if (allIngredients[i].ingredientEnabled)
             {
                 result[index] = allIngredients[i];
+                index++;
             }
         }
         return result;

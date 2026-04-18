@@ -1502,16 +1502,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: abf6646c1b6c6364a860b5479f2f8a17, type: 2}
   CurrentLevel: 3
   TotalHartNumber: 3
-  WaitTimeForHart: 20
+  WaitTimeForHart: 30
   AvailableHart: 0
   timeLeftForNextHart: 0
   AllLevelDatas:
   - OrderedRecipes:
     - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
-    TimeLimit: 100
+    TimeLimit: 5
   - OrderedRecipes:
     - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
-    TimeLimit: 100
+    TimeLimit: 5
 --- !u!1 &1777586467
 GameObject:
   m_ObjectHideFlags: 0
