@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CupCake
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
   recipeName: CupCake
-  FoodSprite: {fileID: 0}
+  FoodSprite: {fileID: -5699339898868086383, guid: 21a1325707f674442bc89fb80dd40d29, type: 3}
   ingredientsNeeded:
   - {fileID: 11400000, guid: 2d6504529dce24046943f21a56019b2e, type: 2}
   - {fileID: 11400000, guid: 05cd3568cccd8b643a107a75c8c0d167, type: 2}

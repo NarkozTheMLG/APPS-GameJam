@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0066e06ff3976764a9e82b7b715ed129, type: 3}
   m_Name: BubleTea
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
-  recipeName: 
-  FoodSprite: {fileID: 0}
-  ingredientsNeeded: []
+  recipeName: BubleTea
+  FoodSprite: {fileID: -5132792853375227910, guid: cc8a080c587503c47b4a11219abc86bc, type: 3}
+  ingredientsNeeded:
+  - {fileID: 11400000, guid: 350f8976dabf5e742ba1769b11e83a49, type: 2}
+  - {fileID: 11400000, guid: 9fab9fcc3a7dfac4d8f6c0847221f18b, type: 2}
+  - {fileID: 11400000, guid: abf6646c1b6c6364a860b5479f2f8a17, type: 2}
