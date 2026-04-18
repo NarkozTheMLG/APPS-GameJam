@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Block
   blockImage: {fileID: 757855185487272532}
-  blockCollider: {fileID: 0}
+  isActive: 0
 --- !u!222 &8896048090382976054
 CanvasRenderer:
   m_ObjectHideFlags: 0
