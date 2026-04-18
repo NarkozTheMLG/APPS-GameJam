@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   ingredientName: Ice
   IngredientImage: {fileID: -856085545168688419, guid: 9e642486d61a8424eac1702b1b7b8810, type: 3}
-  ingredientBlock: {fileID: 0}
+  ingredientBlock: {fileID: -8424572087743188642, guid: bb8b765665dc6d74c8f6886ede9c00a4, type: 3}
   notAvailableIngredientImage: {fileID: 2840336364714655594, guid: e2bb1cd46e5dde94a871bfef0c08aa60, type: 3}
   notAvailableIngredientBlockImage: {fileID: 5253393909761604178, guid: 146d62bfc9ad1d247898339152cab0e8, type: 3}
   ingredientEnabled: 1
-  blueprint: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

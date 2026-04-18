@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   ingredientName: Dough
   IngredientImage: {fileID: -6110981521182986806, guid: ef232390846bba446807fb49e3f18b4f, type: 3}
-  ingredientBlock: {fileID: 6048862160296339182, guid: cfa71685220211c419b5ecd6918255bb, type: 3}
+  ingredientBlock: {fileID: -2791906266195984098, guid: bb3cf406c7087d94e9b340ced1b734d0, type: 3}
   notAvailableIngredientImage: {fileID: 2840336364714655594, guid: e2bb1cd46e5dde94a871bfef0c08aa60, type: 3}
   notAvailableIngredientBlockImage: {fileID: 5253393909761604178, guid: 146d62bfc9ad1d247898339152cab0e8, type: 3}
   ingredientEnabled: 1
-  blueprint: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   ingredientName: Biskuit
   IngredientImage: {fileID: 1989042528420735927, guid: 607e18b8a2df2514fb34f159b1cb6712, type: 3}
-  ingredientBlock: {fileID: 0}
+  ingredientBlock: {fileID: -6333667292264368175, guid: 9230710e3ffe28248828ea1f70c00173, type: 3}
   notAvailableIngredientImage: {fileID: 2840336364714655594, guid: e2bb1cd46e5dde94a871bfef0c08aa60, type: 3}
   notAvailableIngredientBlockImage: {fileID: 5253393909761604178, guid: 146d62bfc9ad1d247898339152cab0e8, type: 3}
   ingredientEnabled: 0

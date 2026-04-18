@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   ingredientName: Tea
   IngredientImage: {fileID: -3070273842284801829, guid: 33b2f2f8a2d10bb4faf6c22053e2939b, type: 3}
-  ingredientBlock: {fileID: 0}
+  ingredientBlock: {fileID: 3588112914763928003, guid: 39d14fd1843964c4f858fe0e125e5ee5, type: 3}
   notAvailableIngredientImage: {fileID: 2840336364714655594, guid: e2bb1cd46e5dde94a871bfef0c08aa60, type: 3}
   notAvailableIngredientBlockImage: {fileID: 5253393909761604178, guid: 146d62bfc9ad1d247898339152cab0e8, type: 3}
   ingredientEnabled: 1
-  blueprint: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
