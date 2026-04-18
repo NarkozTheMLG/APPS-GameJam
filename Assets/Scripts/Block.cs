@@ -8,7 +8,8 @@ public enum BlockColors
     Red,
     Green,
     Blue,
-    White
+    White,
+    None
 }
 
 public class Block : MonoBehaviour,IPointerClickHandler{

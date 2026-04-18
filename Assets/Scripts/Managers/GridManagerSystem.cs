@@ -179,7 +179,7 @@ public class GridManagerSystem : MonoBehaviour
             
             block.SetColor(newColor);
 
-            yield return new WaitForSeconds(0.02f); 
+            yield return new WaitForSeconds(0.01f); 
 
             Vector2Int[] neighbors = {
                 new Vector2Int(current.x + 1, current.y),

@@ -1,5 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
+
+[System.Serializable]
+public class ColorRow
+{
+    public BlockColors[] columns = new BlockColors[3];
+}
 
 [CreateAssetMenu(fileName = "Ingredient", menuName = "Scriptable Objects/Ingredient")]
 public class IngredientData : ScriptableObject
@@ -11,11 +16,5 @@ public class IngredientData : ScriptableObject
     public Sprite notAvailableIngredientBlockImage;
     public bool ingredientEnabled;
     
-    [SerializeField]
-    public bool[,] grid = 
-    {
-        { true,  false, true },
-        { false, true,  false },
-        { true,  false, true }
-    };    
+    public ColorRow[] rows = new ColorRow[3];
 }

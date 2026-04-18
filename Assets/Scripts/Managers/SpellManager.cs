@@ -94,6 +94,7 @@ public class SpellManager : MonoBehaviour
             createABlock(xIndex, yIndex);
             RecordCooldown(WizardSpells.Create, createCD); 
         }
+        StartCoroutine(WaitAndScan());
     }
 
     public void castRowColSpell(int index, bool isVertical)
@@ -127,12 +128,31 @@ public class SpellManager : MonoBehaviour
         }
 
         RecordCooldown(WizardSpells.RowColumnAttack, rowColCD);
+        StartCoroutine(WaitAndScan());
         UpdateArrowVisibility();
     }
 
     public void createABlock(int xIndex, int yIndex)
     {
         GridManagerSystem.Grids[xIndex, yIndex].RestoreBlock();
+        StartCoroutine(WaitAndScan());
+    }
+    
+    private System.Collections.IEnumerator WaitAndScan()
+    {
+        Debug.Log("Waiting for blocks");
+        float delay = 1f;
+        yield return new WaitForSeconds(delay);
+        if (PatternScanner.Instance != null)
+        {
+            Debug.Log("Scanning for blocks");
+            PatternScanner.Instance.ScanForMatches();
+            
+        }
+        else
+        {
+            Debug.Log("Bruh");
+        }
     }
     
     // --- UI HELPERS ---
