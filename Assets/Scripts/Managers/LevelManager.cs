@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
 
         float currentTimer = LevelManager.Instance.timeRemaining;
         int displaySeconds = Mathf.CeilToInt(currentTimer);
-        TimerText.text = "Time Left: " + displaySeconds.ToString();
+        TimerText.text = "" + displaySeconds.ToString();
 
         CustomerRatio.text = "" + (int) CurrentOrderIndex / OrderedRecepies.Length + " / " + OrderedRecepies.Length;
 
