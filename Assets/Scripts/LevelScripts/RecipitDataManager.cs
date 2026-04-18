@@ -15,7 +15,7 @@ public class RecipitDataManager : MonoBehaviour
 
     void Start()
     {
-        data = GameManager.Instance.allIngredients;
+        data = LevelManager.Instance.allIngredients;
 
         if (data.Length > 0) UpdateSingleSlot(0, currentIndex1);
         if (data.Length > 1) UpdateSingleSlot(1, currentIndex2);
