@@ -940,7 +940,7 @@ MonoBehaviour:
   paint: {fileID: 413934722}
   refresh: {fileID: 74575413}
   breakSingle: {fileID: 435496371}
-  point1: {fileID: 0}
+  gridCanvas: {fileID: 1977065922}
 --- !u!4 &1604290917
 Transform:
   m_ObjectHideFlags: 0
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   paint: {fileID: 0}
   refresh: {fileID: 0}
   breakSingle: {fileID: 0}
-  point1: {fileID: 0}
+  gridCanvas: {fileID: 0}
 --- !u!4 &1655501667
 Transform:
   m_ObjectHideFlags: 0
@@ -1241,6 +1241,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969717088}
   m_CullTransparentMesh: 1
+--- !u!1 &1977065922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2638633869041024684, guid: 8eb6ca04577614a29ad1c4da1ce05431, type: 3}
+  m_PrefabInstance: {fileID: 1380487396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3407400852637515896
 PrefabInstance:
   m_ObjectHideFlags: 0
