@@ -7,5 +7,6 @@ public class IngredientData : ScriptableObject
     public string ingredientName;
     public Sprite IngredientImage;
     public Sprite ingredientBlock;
+    public bool ingredientEnabled;
     public bool[] blueprint = new bool[81];
 }

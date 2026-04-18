@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,15 @@ public class RecipitDataManager : MonoBehaviour
 
     void Start()
     {
-        data = LevelManager.Instance.allIngredients;
+        // show just the enabled ingredients
+        IngredientData[] temp = GameManager.Instance.allIngredients;
+        int index = 0;
+        for (int i = 0; i < temp.Length; i++) {
+            if (temp[i].ingredientEnabled)
+            {
+                data[index++] = temp[i];
+            }
+        }
 
         if (data.Length > 0) UpdateSingleSlot(0, currentIndex1);
         if (data.Length > 1) UpdateSingleSlot(1, currentIndex2);

@@ -12,8 +12,6 @@ public class LevelManager : MonoBehaviour
     [Header("Customer Ratio Display")]
     public TextMeshProUGUI CustomerRatio;
 
-    private IngredientData[] allIngredients;
-
     [Header("Level Settings")]
     private Recipe[] OrderedRecepies;
     private float levelTimeLimit;
@@ -35,8 +33,6 @@ public class LevelManager : MonoBehaviour
     {
         CurrentOrderIndex = 0;
         currentIngredientIndex = 0;
-        // load the avaialble reipies
-        allIngredients = GameManager.Instance.allIngredients;
         // load the orders for the given 
         OrderedRecepies = GameManager.Instance.AllLevelDatas[GameManager.Instance.CurrentLevel - 1].OrderedRecipes;
         // load the level time limit

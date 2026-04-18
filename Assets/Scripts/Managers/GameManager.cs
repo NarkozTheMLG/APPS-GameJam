@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 [System.Serializable]
 public struct LevelData
 {
@@ -14,8 +15,18 @@ public class GameManager : MonoBehaviour
 
     public IngredientData[] allIngredients;
     public int CurrentLevel;
-    // TODO: Hartlar için süre sistemi eklenecek.
-    public int Harts;
+
+    [Header("Hart System")]
+    public int TotalHartNumber;
+    public float WaitTimeForHart;
+    [Header("DO NOT TOUCH")]
+    public int AvailableHart;
+    
+
+
+    [Header("DO NOT TOUCH")]
+    public float timeLeftForNextHart;
+    
 
     [Header("Level info")]
     public LevelData[] AllLevelDatas;
@@ -28,7 +39,15 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             CurrentLevel = 1;
-            Harts = 3;
+            AvailableHart = 3;
+
+            if (WaitTimeForHart <= 0) {
+                WaitTimeForHart = 50;
+            }
+
+            if (TotalHartNumber <= 0) {
+                TotalHartNumber = 3;
+            }
         }
         else
         {
@@ -36,31 +55,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadLevel()
+    private void Update()
     {
-        if (CurrentLevel > AllLevelDatas.Length)
-        {
-            // All Levels are done
-            CurrentLevel = AllLevelDatas.Length - 1;
-        }
+        // there are some emoty harts
+        if (AvailableHart < TotalHartNumber) {
+            // start the timer for a hart
+            if (timeLeftForNextHart <= 0)
+            {
+                timeLeftForNextHart = WaitTimeForHart;
+            }
 
-        SceneManager.LoadScene("LevelScene");
+            // continue the previous timer
+            else {
+                timeLeftForNextHart = timeLeftForNextHart - Time.deltaTime;
+                // now one hart completed its time
+                if (timeLeftForNextHart <= 0)
+                {
+                    AvailableHart++;
+                }
+            }
+        }
     }
 
-    public void CloseLevelWin() {
+    public void LoadLevel()
+    {
+        // TODO if there is no harts spawn a warning
+        if (AvailableHart > 0) {
+            if (CurrentLevel > AllLevelDatas.Length)
+            {
+                // All Levels are done
+                CurrentLevel = AllLevelDatas.Length;
+            }
+
+            SceneManager.LoadScene("Level_1");
+        }
+
+    }
+
+    public void CloseLevelWin()
+    {
         CurrentLevel++;
         SceneManager.LoadScene("GameEntery");
     }
 
     public void CloseLevelLose()
     {
-        Harts--;
-        if (Harts < 0) { 
-            Harts = 0;
+        AvailableHart--;
+        if (AvailableHart < 0)
+        {
+            AvailableHart = 0;
         }
 
-        // TODO: Hartlar için süre sistemi eklenecek.
-        
         SceneManager.LoadScene("GameEntery");
     }
 }
