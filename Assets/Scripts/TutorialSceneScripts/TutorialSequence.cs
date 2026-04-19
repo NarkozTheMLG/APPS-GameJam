@@ -21,8 +21,8 @@ public class TutorialSequence : MonoBehaviour
     private string[] spellStepInstructions = {
         "Select the Break Spell!",
         "Great! Now select the Create Spell!",
-        "Powerful! Try the Row & Column Attack!", // New Step
-        "Awesome! Let's try the Paint Spell!",
+        "Powerful! Try the Row & Column Attack!",
+        "Awesome! Let's try the Paint Spell and Choose a color!",
         "Last one! Select the Refresh Spell!"
     };
 
@@ -40,12 +40,11 @@ public class TutorialSequence : MonoBehaviour
         stepButtons = new GameObject[] {
             breakSingle,
             create,
-            rowColumnAttack, // Inserted here
+            rowColumnAttack,
             paint,
             refresh
         };
 
-        // Lock all buttons initially
         foreach (GameObject btn in stepButtons)
         {
             if (btn != null) btn.GetComponent<Button>().interactable = false;
@@ -76,12 +75,10 @@ public class TutorialSequence : MonoBehaviour
 
         if (currentStepIndex == stepButtons.Length - 1)
         {
-            // Reroute straight to the finish line!
             StartCoroutine(FinishTutorialSequence());
         }
         else
         {
-            // Otherwise, do the normal grid targeting step
             StartCoroutine(TransitionToGridStep());
         }
     }
@@ -90,7 +87,6 @@ public class TutorialSequence : MonoBehaviour
     {
         isTransitioning = true;
 
-        // Turn off the spotlight/highlight on the Refresh button
         GameObject currentButton = stepButtons[currentStepIndex];
         TutorialManager.Instance.EndTutorialStep(currentButton);
 
@@ -110,8 +106,8 @@ public class TutorialSequence : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.1f);
 
-        // Grid instruction - no shade used here so they can see the blocks!
         TutorialManager.Instance.StartTutorialStep(gridCanvas, BlockStepInstructions[currentStepIndex], false);
+
 
         isTransitioning = false;
     }

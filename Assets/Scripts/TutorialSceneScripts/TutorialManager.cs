@@ -11,6 +11,10 @@ public class TutorialManager : MonoBehaviour
     public GameObject tutorialBubble;
     public TextMeshProUGUI bubbleText;
 
+    [Header("Bubble Settings")]
+    // Tweak these numbers in the Inspector! Positive X is right, Positive Y is up.
+    public Vector3 bubbleOffset = new Vector3(50f, 50f, 0f);
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -21,6 +25,7 @@ public class TutorialManager : MonoBehaviour
     {
         Time.timeScale = 0f;
 
+
         if (darkScreenPanel) darkScreenPanel.SetActive(useShade);
         if (tutorialBubble) tutorialBubble.SetActive(true);
         if (bubbleText) bubbleText.text = instruction;
@@ -29,6 +34,7 @@ public class TutorialManager : MonoBehaviour
         RectTransform bubbleRect = tutorialBubble.GetComponent<RectTransform>();
         if (bubbleRect != null)
         {
+            /*
             // 1. Ensure anchors are centered (optional but recommended to do in code)
             bubbleRect.anchorMin = new Vector2(0.5f, 0.5f);
             bubbleRect.anchorMax = new Vector2(0.5f, 0.5f);
@@ -36,6 +42,8 @@ public class TutorialManager : MonoBehaviour
 
             // 2. Set position to (0,0) relative to the center
             bubbleRect.anchoredPosition = Vector2.zero;
+            */
+            bubbleRect.transform.position = targetElement.transform.position + bubbleOffset;
         }
 
         // --- HANDLE HIGHLIGHTING ---
