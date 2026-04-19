@@ -1,43 +1,64 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelGoalManager : MonoBehaviour
 {
     public static LevelGoalManager Instance;
 
-    [Header("The Level Goal")]
-    public Recipe currentRecipe;
+    [Header("UI Elements")]
+    public Image foodDisplayIcon; 
+    public TextMeshProUGUI foodProgressText; 
 
-    [Header("Main UI Elements")]
-    public Image foodDisplayIcon; // The big image of the final dish
-    
     [Header("Ingredient UI Slots")]
-    public Image[] ingredientIcons;      // The 3 icons showing WHAT to make
-    public Image[] checkmarkStatusUI;    // The 3 icons showing IF it's done
-
+    public Image[] ingredientIcons;
+    public Image[] checkmarkStatusUI;
+    
     [Header("Status Sprites")]
-    public Sprite pendingSprite;   // e.g., an empty box or red 'X'
-    public Sprite completedSprite; // e.g., a green checkmark
+    public Sprite pendingSprite;   
+    public Sprite completedSprite; 
 
+    [HideInInspector] public Recipe currentRecipe;
     [HideInInspector] public IngredientData[] activeRecipes;
     [HideInInspector] public bool[] isIngredientComplete;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private int recipeIndex = 0; 
+    private LevelData currentLevelData;
+
+    private void Awake() => Instance = this;
 
     private void Start()
     {
-        InitializeLevel();
+        int levelIndex = Mathf.Clamp(GameManager.Instance.CurrentLevel - 1, 0, GameManager.Instance.AllLevelDatas.Length - 1);
+        currentLevelData = GameManager.Instance.AllLevelDatas[levelIndex];
+        
+        LoadCurrentRecipe();
     }
 
-    private void InitializeLevel()
+    private void LoadCurrentRecipe()
+    {
+        if (recipeIndex < currentLevelData.OrderedRecipes.Length)
+        {
+            currentRecipe = currentLevelData.OrderedRecipes[recipeIndex];
+            InitializeRecipeUI();
+            UpdateProgressUI();
+        }
+        else
+        {
+            Debug.Log("LEVEL COMPLETE!");
+        
+            if (PatternScanner.Instance != null) 
+                PatternScanner.Instance.enabled = false;
+
+            GameManager.Instance.CloseLevelWin(); 
+        }
+    }
+
+    private void InitializeRecipeUI()
     {
         if (currentRecipe == null) return;
 
-        if (foodDisplayIcon != null)
-            foodDisplayIcon.sprite = currentRecipe.FoodSprite;
+        if (foodDisplayIcon != null) foodDisplayIcon.sprite = currentRecipe.FoodSprite;
 
         activeRecipes = currentRecipe.ingredientsNeeded;
         isIngredientComplete = new bool[activeRecipes.Length];
@@ -48,7 +69,6 @@ public class LevelGoalManager : MonoBehaviour
             {
                 ingredientIcons[i].gameObject.SetActive(true);
                 checkmarkStatusUI[i].gameObject.SetActive(true);
-                
                 ingredientIcons[i].sprite = activeRecipes[i].IngredientImage;
                 checkmarkStatusUI[i].sprite = pendingSprite;
             }
@@ -62,25 +82,30 @@ public class LevelGoalManager : MonoBehaviour
 
     public void IngredientMatched(int index)
     {
-        if (index < 0 || index >= isIngredientComplete.Length || index >= checkmarkStatusUI.Length) 
-            return;
-
+        if (index < 0 || index >= isIngredientComplete.Length) return;
         if (isIngredientComplete[index]) return;
 
         isIngredientComplete[index] = true;
         checkmarkStatusUI[index].sprite = completedSprite;
 
-        Debug.Log($"Checkmark updated for: {activeRecipes[index].ingredientName}");
-
-        if (CheckAllDone())
+        if (CheckAllIngredientsDone())
         {
-            Debug.Log("LEVEL COMPLETE: " + currentRecipe.recipeName);
+            recipeIndex++;
+            LoadCurrentRecipe(); 
         }
     }
 
-    private bool CheckAllDone()
+    private bool CheckAllIngredientsDone()
     {
         foreach (bool done in isIngredientComplete) if (!done) return false;
         return true;
+    }
+
+    private void UpdateProgressUI()
+    {
+        if (foodProgressText != null)
+        {
+            foodProgressText.text = $"Food: {recipeIndex}/{currentLevelData.OrderedRecipes.Length}";
+        }
     }
 }

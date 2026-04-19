@@ -272,9 +272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   TimerText: {fileID: 168209498}
-  CustomerRatio: {fileID: 1702080187}
-  CurrentOrderIndex: 0
-  currentIngredientIndex: 0
   timeRemaining: 0
   isGameActive: 0
 --- !u!4 &506065944
@@ -711,10 +708,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GamePlayTopUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4406965499118101012, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
+      propertyPath: m_Name
+      value: IngredientImage3
+      objectReference: {fileID: 0}
     - target: {fileID: 6895978025066907077, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1567088359}
+    - target: {fileID: 7108677727236113796, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
+      propertyPath: m_Name
+      value: IngredientImage1
+      objectReference: {fileID: 0}
     - target: {fileID: 7577600691795534271, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
       propertyPath: m_Name
       value: IngredientBackground
@@ -865,13 +870,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
+      propertyPath: currentRecipe
+      value: 
+      objectReference: {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
+    - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
       propertyPath: foodDisplayIcon
       value: 
       objectReference: {fileID: 271383427}
     - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
+      propertyPath: foodProgressText
+      value: 
+      objectReference: {fileID: 1702080187}
+    - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
       propertyPath: 'ingredientIcons.Array.data[0]'
       value: 
-      objectReference: {fileID: 1858762847}
+      objectReference: {fileID: 336312702}
     - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
       propertyPath: 'ingredientIcons.Array.data[1]'
       value: 
@@ -879,7 +892,7 @@ PrefabInstance:
     - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
       propertyPath: 'ingredientIcons.Array.data[2]'
       value: 
-      objectReference: {fileID: 336312702}
+      objectReference: {fileID: 1858762847}
     - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
       propertyPath: 'checkmarkStatusUI.Array.data[0]'
       value: 

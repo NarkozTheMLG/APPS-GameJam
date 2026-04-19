@@ -1542,6 +1542,7 @@ MonoBehaviour:
   cellSize: 84
   spacing: 0
   spellButtonPrefab: {fileID: 7518768130438123025, guid: 575be69f69e0646fa858bdaf6c73d112, type: 3}
+  canSnap: 1
 --- !u!212 &767608880355276351
 SpriteRenderer:
   serializedVersion: 2
@@ -1811,7 +1812,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.948703, b: 0.0141509175, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1833,4 +1834,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8006826550391239618}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7131800312800590351}
+        m_TargetAssemblyTypeName: GridManagerSystem, Assembly-CSharp
+        m_MethodName: ThanosSnapAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

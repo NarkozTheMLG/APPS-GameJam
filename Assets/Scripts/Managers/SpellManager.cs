@@ -117,7 +117,6 @@ public class SpellManager : MonoBehaviour
         else
         {
             bool shoot=false;
-            Debug.Log(index);
             for (int i = 0; i < GridManagerSystem.COLUMNSIZE; i++)
                 if (GridManagerSystem.Grids[i, index].isActive)
                 {
@@ -158,7 +157,6 @@ public class SpellManager : MonoBehaviour
 
         if (PatternScanner.Instance != null)
         {
-            Debug.Log("Scanning for blocks");
             PatternScanner.Instance.ScanForMatches();
         }
         else
