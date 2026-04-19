@@ -1051,14 +1051,14 @@ RectTransform:
   m_GameObject: {fileID: 861482268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7637, y: 1.7637, z: 1.7637}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 209881980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 313, y: -338}
+  m_AnchoredPosition: {x: 61, y: -486}
   m_SizeDelta: {x: 199.0432, y: 199.0432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861482270
@@ -1213,7 +1213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -388.99997}
+  m_AnchoredPosition: {x: 359, y: -294.99997}
   m_SizeDelta: {x: 183.9887, y: 175.9995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1200191301
@@ -1516,6 +1516,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
     TimeLimit: 555
     LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
+  OpenTutorial: 1
 --- !u!1 &1617695673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -389}
+  m_AnchoredPosition: {x: 359, y: -295}
   m_SizeDelta: {x: 324.97, y: 292.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1838331442
@@ -1821,6 +1822,10 @@ PrefabInstance:
     - target: {fileID: 9221420809008713282, guid: cee2b07f9d78e4ec8a903a3e094874a8, type: 3}
       propertyPath: m_Name
       value: FlyingIngredient
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221420809008713282, guid: cee2b07f9d78e4ec8a903a3e094874a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
