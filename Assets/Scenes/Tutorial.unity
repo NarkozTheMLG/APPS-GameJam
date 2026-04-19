@@ -1952,6 +1952,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1884567110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884567104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &1923312531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2261,6 +2278,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7936128738986571820, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1884567109}
+    - targetCorrespondingSourceObject: {fileID: 7936128738986571820, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1884567110}
     - targetCorrespondingSourceObject: {fileID: 7983421754990943566, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 100718949}

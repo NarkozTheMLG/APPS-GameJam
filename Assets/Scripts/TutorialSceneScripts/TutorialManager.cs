@@ -54,6 +54,13 @@ public class TutorialManager : MonoBehaviour
         {
             targetCanvas.overrideSorting = useShade;
             targetCanvas.sortingOrder = useShade ? 101 : 0;
+
+            // THE AUTOMATIC FIX: Give it a click-detector if it doesn't have one!
+            GraphicRaycaster raycaster = targetElement.GetComponent<GraphicRaycaster>();
+            if (raycaster == null && useShade)
+            {
+                targetElement.gameObject.AddComponent<GraphicRaycaster>();
+            }
         }
     }
 
