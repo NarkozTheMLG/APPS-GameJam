@@ -29,7 +29,15 @@ public class LevelGoalManager : MonoBehaviour
 
     private void Start()
     {
-        int levelIndex = Mathf.Clamp(GameManager.Instance.CurrentLevel - 1, 0, GameManager.Instance.AllLevelDatas.Length - 1);
+        int levelIndex;
+        if (GameManager.Instance.OpenTutorial) {
+            levelIndex = 0;
+        }
+        else
+        {
+            levelIndex = Mathf.Clamp(GameManager.Instance.CurrentLevel - 1, 0, GameManager.Instance.AllLevelDatas.Length - 1);
+        }
+            
         currentLevelData = GameManager.Instance.AllLevelDatas[levelIndex];
         
         LoadCurrentRecipe();

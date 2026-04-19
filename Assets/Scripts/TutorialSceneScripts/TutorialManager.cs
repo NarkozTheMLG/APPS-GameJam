@@ -11,9 +11,10 @@ public class TutorialManager : MonoBehaviour
     public GameObject tutorialBubble;
     public TextMeshProUGUI bubbleText;
 
-    [Header("Bubble Settings")]
+
+    [Header("Fallback Settings")]
     // Tweak these numbers in the Inspector! Positive X is right, Positive Y is up.
-    public Vector3 bubbleOffset = new Vector3(50f, 50f, 0f);
+    public Vector3 bubbleOffset = new Vector3(0f, 50f, 0f);
 
     private void Awake()
     {
@@ -21,29 +22,30 @@ public class TutorialManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void StartTutorialStep(GameObject targetElement, string instruction, bool useShade = true)
+    // REMOVED useGridShade. Now it only takes the target, text, shade bool, and anchor!
+    public void StartTutorialStep(GameObject targetElement, string instruction, bool useShade = true, Transform explicitBubbleLocation = null)
     {
         Time.timeScale = 0f;
 
-
         if (darkScreenPanel) darkScreenPanel.SetActive(useShade);
+
         if (tutorialBubble) tutorialBubble.SetActive(true);
         if (bubbleText) bubbleText.text = instruction;
 
-        // --- NEW: CENTER THE BUBBLE ---
+        // --- POSITION THE BUBBLE ---
         RectTransform bubbleRect = tutorialBubble.GetComponent<RectTransform>();
         if (bubbleRect != null)
         {
-            /*
-            // 1. Ensure anchors are centered (optional but recommended to do in code)
-            bubbleRect.anchorMin = new Vector2(0.5f, 0.5f);
-            bubbleRect.anchorMax = new Vector2(0.5f, 0.5f);
-            bubbleRect.pivot = new Vector2(0.5f, 0.5f);
-
-            // 2. Set position to (0,0) relative to the center
-            bubbleRect.anchoredPosition = Vector2.zero;
-            */
-            bubbleRect.transform.position = targetElement.transform.position + bubbleOffset;
+            // IF we provided a specific anchor, go exactly there!
+            if (explicitBubbleLocation != null)
+            {
+                bubbleRect.transform.position = explicitBubbleLocation.position;
+            }
+            // OTHERWISE, use the old math fallback
+            else
+            {
+                bubbleRect.transform.position = targetElement.transform.position + bubbleOffset;
+            }
         }
 
         // --- HANDLE HIGHLIGHTING ---
