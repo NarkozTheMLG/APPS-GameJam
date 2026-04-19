@@ -54,6 +54,7 @@ public class PatternScanner : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
+                
                 Block gridBlock = GridManagerSystem.Grids[startX + i, startY + j];
                 BlockColors requiredColor = pattern.rows[j].columns[i];
 
@@ -77,23 +78,16 @@ public class PatternScanner : MonoBehaviour
     {
         PlaySFX(matchSound);
     
-        // 1. Get positions directly from UI
         Vector3 spawnPos = GridManagerSystem.Grids[startX + 1, startY + 1].transform.position;
         Vector3 targetPos = LevelGoalManager.Instance.ingredientIcons[recipeIndex].transform.position;
 
-        // 2. THE MULTI-STEP SPAWN
-        // Step A: Create the clone in the scene first (no parent)
         GameObject flyObj = Instantiate(flyPrefab); 
     
-        // Step B: Parent the CLONE (flyObj), not the prefab (flyPrefab)
-        // We use SetParent(..., false) to keep the UI scale from exploding
         flyObj.transform.SetParent(uiCanvas.transform, false); 
 
-        // 3. Setup the effect
         IngredientFlyEffect effect = flyObj.GetComponent<IngredientFlyEffect>();
         Sprite ingredientSprite = LevelGoalManager.Instance.activeRecipes[recipeIndex].IngredientImage;
 
-        // 4. Grid Logic
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -102,7 +96,6 @@ public class PatternScanner : MonoBehaviour
             }
         }
 
-        // 5. Start the fly
         effect.StartFly(spawnPos, targetPos, ingredientSprite, () => {
             LevelGoalManager.Instance.IngredientMatched(recipeIndex);
             SpellManager.Instance.UpdateArrowVisibility();

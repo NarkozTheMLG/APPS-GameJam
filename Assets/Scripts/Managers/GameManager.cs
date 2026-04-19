@@ -13,6 +13,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+	[Header("SFX Settings")]
+public AudioSource sfxSource;
+
+public void PlaySFX(AudioClip clip)
+{
+    if (clip != null && sfxSource != null)
+    {
+        sfxSource.clip = clip;
+
+        sfxSource.pitch = Random.Range(0.85f, 1.2f);
+
+        sfxSource.Play();
+    }
+}
+	
     public IngredientData[] allIngredients;
     public int CurrentLevel;
 
@@ -23,6 +38,7 @@ public class GameManager : MonoBehaviour
     [Header("DO NOT TOUCH")]
     public int AvailableHart;
     public float timeLeftForNextHart;
+
 
     [Header("Level Info")]
     public LevelData[] AllLevelDatas;
@@ -97,7 +113,8 @@ public class GameManager : MonoBehaviour
             if (CurrentLevel > AllLevelDatas.Length) {
                 CurrentLevel = AllLevelDatas.Length;
             }
-
+		MusicManager.Instance.PlayGameplayMusic();
+		
             if (CurrentLevel == 0) {
                 SceneManager.LoadScene("Tutorial");
             }
@@ -113,9 +130,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CloseLevelWin()
+    public void CloseLevelWin( )
     {
         CurrentLevel++;
+		PlaySFX(sfxSource.clip);
+		MusicManager.Instance.PlayMenuMusic();
         SceneManager.LoadScene("GameEntery");
     }
 

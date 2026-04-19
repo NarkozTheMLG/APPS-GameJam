@@ -56,6 +56,5 @@ public class LevelManager : MonoBehaviour
         
         if (PatternScanner.Instance != null) PatternScanner.Instance.enabled = false;
         
-        GameManager.Instance.CloseLevelLose();
     }
 }
