@@ -109,7 +109,7 @@ if (RecipitDataManager.Instance != null)
     {
         if (foodProgressText != null)
         {
-            foodProgressText.text = $"Food: {recipeIndex}/{currentLevelData.OrderedRecipes.Length}";
+            foodProgressText.text = $"{recipeIndex}/{currentLevelData.OrderedRecipes.Length}";
         }
     }
 }

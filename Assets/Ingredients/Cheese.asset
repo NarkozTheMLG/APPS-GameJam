@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
   ingredientName: Cheese
   IngredientImage: {fileID: 6582011127417039112, guid: df6669639cbdb4947b1479d8f5331452, type: 3}
-  ingredientBlock: {fileID: 7819979540022171262, guid: 6b696ed0f7571b546ac021150c2ec9e7, type: 3}
+  ingredientBlock: {fileID: -6997112769706161530, guid: d50920b97747c4138b699098fb31822b, type: 3}
   notAvailableIngredientImage: {fileID: 2840336364714655594, guid: e2bb1cd46e5dde94a871bfef0c08aa60, type: 3}
   notAvailableIngredientBlockImage: {fileID: 5253393909761604178, guid: 146d62bfc9ad1d247898339152cab0e8, type: 3}
   ingredientEnabled: 1
