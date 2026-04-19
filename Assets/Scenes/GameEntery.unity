@@ -1058,7 +1058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61, y: -486}
+  m_AnchoredPosition: {x: 61, y: -434}
   m_SizeDelta: {x: 199.0432, y: 199.0432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861482270
@@ -1506,12 +1506,12 @@ MonoBehaviour:
   - OrderedRecipes:
     - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
     TimeLimit: 120
-    LevelTable: {fileID: -3694604642435081948, guid: da651adcc87f82a449a37f4f8231eb6f, type: 3}
+    LevelTable: {fileID: -3678053731107237469, guid: ac28e130a001d7a428f32cd347c6a6ce, type: 3}
   - OrderedRecipes:
     - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
     - {fileID: 11400000, guid: e71553aceccda704c9ab683bc4d58d15, type: 2}
     TimeLimit: 3000
-    LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
+    LevelTable: {fileID: 1731080161736690897, guid: 8436571a7e927004b91d49f2e1e03a52, type: 3}
   - OrderedRecipes:
     - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
     TimeLimit: 555
