@@ -75,22 +75,25 @@ public class PatternScanner : MonoBehaviour
  
     private void ProcessMatch(int startX, int startY, int recipeIndex)
     {
-        
         PlaySFX(matchSound);
-        
-        Canvas localCanvas = FindFirstObjectByType<Canvas>();
     
-        Vector3 worldCenter = GridManagerSystem.Grids[startX + 1, startY + 1].transform.position;
-    
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(worldCenter);
-    
+        // 1. Get positions directly from UI
+        Vector3 spawnPos = GridManagerSystem.Grids[startX + 1, startY + 1].transform.position;
         Vector3 targetPos = LevelGoalManager.Instance.ingredientIcons[recipeIndex].transform.position;
 
-        GameObject flyObj = Instantiate(flyPrefab, localCanvas.transform);
-        IngredientFlyEffect effect = flyObj.GetComponent<IngredientFlyEffect>();
+        // 2. THE MULTI-STEP SPAWN
+        // Step A: Create the clone in the scene first (no parent)
+        GameObject flyObj = Instantiate(flyPrefab); 
     
+        // Step B: Parent the CLONE (flyObj), not the prefab (flyPrefab)
+        // We use SetParent(..., false) to keep the UI scale from exploding
+        flyObj.transform.SetParent(uiCanvas.transform, false); 
+
+        // 3. Setup the effect
+        IngredientFlyEffect effect = flyObj.GetComponent<IngredientFlyEffect>();
         Sprite ingredientSprite = LevelGoalManager.Instance.activeRecipes[recipeIndex].IngredientImage;
 
+        // 4. Grid Logic
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -98,10 +101,11 @@ public class PatternScanner : MonoBehaviour
                 GridManagerSystem.Grids[startX + i, startY + j].BreakBlock();
             }
         }
-        effect.StartFly(screenPoint, targetPos, localCanvas, ingredientSprite, () => {
+
+        // 5. Start the fly
+        effect.StartFly(spawnPos, targetPos, ingredientSprite, () => {
             LevelGoalManager.Instance.IngredientMatched(recipeIndex);
             SpellManager.Instance.UpdateArrowVisibility();
         });
-       
     }
 }
