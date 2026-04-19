@@ -53,7 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Block
   audioSource: {fileID: -2398507863434198488}
   breakSound: {fileID: 8300000, guid: a944893aea4624cf184ad168a6b8ebbe, type: 3}
-  paintSound: {fileID: 8300000, guid: 620a890dfea284a32ab7d3cdaf8d6353, type: 3}
   burstPrefab: {fileID: 7137109010782635332, guid: 5719a35a52f2e456ba8344c1de9712fb, type: 3}
   shardSprite: {fileID: 7234555176589446116, guid: 835e94813c29546d0a52a800a5cfbe77, type: 3}
   blockImage: {fileID: 757855185487272532}
@@ -83,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

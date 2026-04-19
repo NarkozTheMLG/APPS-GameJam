@@ -16,7 +16,6 @@ public class Block : MonoBehaviour,IPointerClickHandler{
     [Header("Audio Settings")]
     public AudioSource audioSource;
     public AudioClip breakSound;
-    public AudioClip paintSound;
     private void PlaySFX(AudioClip clip)
     {
         if (clip != null && audioSource != null)
@@ -45,7 +44,6 @@ public void SetColor(BlockColors newColor)
     {
         
         this.color = newColor;
-        PlaySFX(paintSound);
         StopAllCoroutines();
         StartCoroutine(AnimateTransformation(newColor));
     }

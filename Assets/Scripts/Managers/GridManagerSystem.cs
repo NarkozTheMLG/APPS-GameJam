@@ -5,7 +5,9 @@ using System.Collections.Generic;
 
 public class GridManagerSystem : MonoBehaviour
 {
-    
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip paintSound;
     public static GridManagerSystem Instance; 
 
     public const int ROWSIZE = 9;
@@ -31,6 +33,17 @@ public class GridManagerSystem : MonoBehaviour
         
     }
 
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.25f);
+            audioSource.PlayOneShot(clip);    
+        }
+    }
+
+    
+    
     private void SpawnSideButtons(float startX, float startY, float cellSize)
     {
         for (int i = 0; i < ROWSIZE; i++)
@@ -156,7 +169,7 @@ public class GridManagerSystem : MonoBehaviour
     public void Paint(int x, int y, BlockColors newColor)
     {
         if (!IsInsideGrid(x, y) || !Grids[x, y].isActive) return;
-    
+            PlaySFX(paintSound);
         StopAllCoroutines();
         StartCoroutine(AnimatedFloodFill(x, y, newColor));
     }
@@ -165,9 +178,9 @@ public class GridManagerSystem : MonoBehaviour
     {
         BlockColors targetColor = Grids[x, y].GetColor();
         if (targetColor == newColor) yield break;
-
         Queue<Vector2Int> nodes = new Queue<Vector2Int>();
         nodes.Enqueue(new Vector2Int(x, y));
+            PlaySFX(paintSound);
 
         HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
         visited.Add(new Vector2Int(x, y));

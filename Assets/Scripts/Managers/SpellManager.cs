@@ -52,7 +52,7 @@ public class SpellManager : MonoBehaviour
 
     void Start()
     {
-        currentSpell = WizardSpells.Paint;
+        currentSpell = WizardSpells.BreakSingle;
         currentColor = BlockColors.Red;
         UpdateButtonVisibility();
     }
