@@ -11,13 +11,26 @@ public class TutorialSequence : MonoBehaviour
     public GameObject refresh;
     public GameObject breakSingle;
 
+    [Header("Anchors")]
+    public Transform timerAnchor;
+    public Transform customerRatioAnchor;
+    public Transform OrderedRecipitAnchor;
+    public Transform spellBookAnchor;
+    public Transform[] spellAnchors = new Transform[5];
+    public Transform gridAnchor;
+
     [Header("Gameplay Elements")]
     public GameObject gridCanvas;
+
+    [Header("UI Elements")]
+    public GameObject timerUI;
+    public GameObject CustomerRatio;
+    public GameObject OrderedRecipit;
+    public GameObject SpellNotes;
 
     private bool isTransitioning = false;
     private GameObject[] stepButtons;
 
-    // --- UPDATED: Added the RowColumn instruction before Paint ---
     private string[] spellStepInstructions = {
         "Select the Break Spell!",
         "Great! Now select the Create Spell!",
@@ -29,13 +42,13 @@ public class TutorialSequence : MonoBehaviour
     private string[] BlockStepInstructions = {
         "Now click on a block!",
         "Now click on the empty place",
-        "Now clik on a lazer pointer",
+        "Now click on a laser pointer",
         "Now click on a block to paint"
     };
 
     private int currentStepIndex = 0;
 
-    void Start()
+    IEnumerator Start()
     {
         stepButtons = new GameObject[] {
             breakSingle,
@@ -50,7 +63,35 @@ public class TutorialSequence : MonoBehaviour
             if (btn != null) btn.GetComponent<Button>().interactable = false;
         }
 
-        // Start the first step
+        // --- THE CINEMATIC INTRO ---
+
+        // Passed: true (main shade), false (grid shade), timerAnchor
+        TutorialManager.Instance.StartTutorialStep(timerUI, "Keep an eye on the timer! I made a time froze spell for this turn.", true, false, timerAnchor);
+        yield return new WaitForSecondsRealtime(3f);
+        TutorialManager.Instance.EndTutorialStep(timerUI);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        // Passed: customerRatioAnchor
+        TutorialManager.Instance.StartTutorialStep(CustomerRatio, "You can see the number of waiting customers here.", true, false, customerRatioAnchor);
+        yield return new WaitForSecondsRealtime(3f);
+        TutorialManager.Instance.EndTutorialStep(CustomerRatio);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        // Passed: OrderedRecipitAnchor
+        TutorialManager.Instance.StartTutorialStep(OrderedRecipit, "The orders shown in here.", true, false, OrderedRecipitAnchor);
+        yield return new WaitForSecondsRealtime(3f);
+        TutorialManager.Instance.EndTutorialStep(OrderedRecipit);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        // Passed: spellBookAnchor
+        TutorialManager.Instance.StartTutorialStep(SpellNotes, "You can check my spell notes if you forget the ingredient spells!", true, false, spellBookAnchor);
+        yield return new WaitForSecondsRealtime(3f);
+        TutorialManager.Instance.EndTutorialStep(SpellNotes);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        // --- END CINEMATIC INTRO ---
+
+        // Start the normal spell tutorial sequence
         StartCurrentStep();
     }
 
@@ -65,13 +106,16 @@ public class TutorialSequence : MonoBehaviour
         GameObject currentButton = stepButtons[currentStepIndex];
         currentButton.GetComponent<Button>().interactable = true;
 
-        // This will now use the center-screen logic we set up in TutorialManager
-        TutorialManager.Instance.StartTutorialStep(currentButton, spellStepInstructions[currentStepIndex]);
+        // Passed: spellAnchors array!
+        TutorialManager.Instance.StartTutorialStep(currentButton, spellStepInstructions[currentStepIndex], true, false, spellAnchors[currentStepIndex]);
     }
 
     public void OnSpellSelected()
     {
         if (isTransitioning) return;
+
+        // INSTANT LOCK: Prevent double-clicking!
+        stepButtons[currentStepIndex].GetComponent<Button>().interactable = false;
 
         if (currentStepIndex == stepButtons.Length - 1)
         {
@@ -106,8 +150,15 @@ public class TutorialSequence : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.1f);
 
-        TutorialManager.Instance.StartTutorialStep(gridCanvas, BlockStepInstructions[currentStepIndex], false);
-
+        // Restored Grid Shade logic and passed the gridAnchor!
+        if (currentButton == rowColumnAttack)
+        {
+            TutorialManager.Instance.StartTutorialStep(gridCanvas, BlockStepInstructions[currentStepIndex], false, true, gridAnchor);
+        }
+        else
+        {
+            TutorialManager.Instance.StartTutorialStep(gridCanvas, BlockStepInstructions[currentStepIndex], false, false, gridAnchor);
+        }
 
         isTransitioning = false;
     }
