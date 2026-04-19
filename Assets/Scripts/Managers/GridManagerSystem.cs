@@ -16,7 +16,7 @@ public GameObject arrowVFXPrefab;
 [Header("UI References")]
 public Canvas mainUICanvas; 
     public const int ROWSIZE = 9;
-    public const int COLUMNSIZE = 10;
+    public const int COLUMNSIZE = 9;
 
     [Header("Settings")]
     [SerializeField] private GameObject blockPrefab;
