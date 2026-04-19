@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_1.unity
     guid: cff24b57ccd02df499fab4cd672fd100
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 80e24655a91f0584b8da1356d02f565d
+  - enabled: 1
     path: Assets/Scenes/SpellBookScene.unity
     guid: 157684f17147d83478a5e0552b792a61
   m_configObjects:
