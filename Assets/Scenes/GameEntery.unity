@@ -1507,15 +1507,15 @@ MonoBehaviour:
   AllLevelDatas:
   - OrderedRecipes:
     - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
-    TimeLimit: 120
+    TimeLimit: 300
     LevelTable: {fileID: -3678053731107237469, guid: ac28e130a001d7a428f32cd347c6a6ce, type: 3}
   - OrderedRecipes:
     - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
-    - {fileID: 11400000, guid: e71553aceccda704c9ab683bc4d58d15, type: 2}
-    TimeLimit: 3000
+    TimeLimit: 500
     LevelTable: {fileID: 1731080161736690897, guid: 8436571a7e927004b91d49f2e1e03a52, type: 3}
   - OrderedRecipes:
-    - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
+    - {fileID: 11400000, guid: 3b52f8c242a0b6846b002631df0d64f5, type: 2}
+    - {fileID: 11400000, guid: f29451dc8e812bb4193104fa7c8d121d, type: 2}
     TimeLimit: 555
     LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
   OpenTutorial: 1
@@ -1735,7 +1735,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 70ac2cdb2c1094cec895b598dab337ac, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
@@ -1832,7 +1832,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: ffde84426aefc477d9434a79413d7115, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1929,7 +1929,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: dd7574ca7677747479446237e9a2aaea, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
