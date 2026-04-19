@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TutorialSequence : MonoBehaviour
@@ -10,45 +11,104 @@ public class TutorialSequence : MonoBehaviour
     public GameObject refresh;
     public GameObject breakSingle;
 
-    // NEW: Add a slot for your Grid Canvas so we can highlight it
     [Header("Gameplay Elements")]
     public GameObject gridCanvas;
 
     private bool isTransitioning = false;
+    private GameObject[] stepButtons;
+
+    // --- UPDATED: Added the RowColumn instruction before Paint ---
+    private string[] stepInstructions = {
+        "Select the Break Spell!",
+        "Great! Now select the Create Spell!",
+        "Powerful! Try the Row & Column Attack!", // New Step
+        "Awesome! Let's try the Paint Spell!",
+        "Last one! Select the Refresh Spell!"
+    };
+
+    private int currentStepIndex = 0;
 
     void Start()
     {
-        // 1. Point at the spell button
-        TutorialManager.Instance.StartTutorialStep(breakSingle, "Select the Break Spell!");
+        stepButtons = new GameObject[] {
+            breakSingle,
+            create,
+            rowColumnAttack, // Inserted here
+            paint,
+            refresh
+        };
+
+        // Lock all buttons initially
+        foreach (GameObject btn in stepButtons)
+        {
+            if (btn != null) btn.GetComponent<Button>().interactable = false;
+        }
+
+        // Start the first step
+        StartCurrentStep();
     }
 
-    // --- TRIGGERED BY THE UI BUTTON ---
+    private void StartCurrentStep()
+    {
+        if (currentStepIndex >= stepButtons.Length)
+        {
+            FinishTutorial();
+            return;
+        }
+
+        GameObject currentButton = stepButtons[currentStepIndex];
+        currentButton.GetComponent<Button>().interactable = true;
+
+        // This will now use the center-screen logic we set up in TutorialManager
+        TutorialManager.Instance.StartTutorialStep(currentButton, stepInstructions[currentStepIndex]);
+    }
+
     public void OnSpellSelected()
     {
         if (isTransitioning) return;
-
-        // 2. Point at the grid! 
-        TutorialManager.Instance.StartTutorialStep(gridCanvas, "Now click on a block to break it!");
+        StartCoroutine(TransitionToGridStep());
     }
 
-    // --- TRIGGERED BY YOUR GRID DETECTOR ---
+    private IEnumerator TransitionToGridStep()
+    {
+        isTransitioning = true;
+
+        GameObject currentButton = stepButtons[currentStepIndex];
+        TutorialManager.Instance.EndTutorialStep(currentButton);
+
+        yield return new WaitForSecondsRealtime(0.1f);
+
+        // Grid instruction - no shade used here so they can see the blocks!
+        TutorialManager.Instance.StartTutorialStep(gridCanvas, "Now click on a block!", false);
+
+        isTransitioning = false;
+    }
+
     public void OnGridActionCompleted()
     {
         if (isTransitioning) return;
-
-        // Start the timer to let the spell animation play
-        StartCoroutine(WaitAndShowCreateStep());
+        StartCoroutine(WaitAndShowNextStep());
     }
 
-    private IEnumerator WaitAndShowCreateStep()
+    private IEnumerator WaitAndShowNextStep()
     {
         isTransitioning = true;
         TutorialManager.Instance.EndTutorialStep(gridCanvas);
 
-        // Wait for the spell animation (breaking, painting, or creating)
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(0.1f);
 
-        TutorialManager.Instance.StartTutorialStep(create, "Great! Now select the Create Spell!");
+        currentStepIndex++;
+        StartCurrentStep();
+
         isTransitioning = false;
+    }
+
+    public void FinishTutorial()
+    {
+        foreach (GameObject btn in stepButtons)
+        {
+            if (btn != null) btn.GetComponent<Button>().interactable = true;
+        }
+        Destroy(gameObject);
     }
 }
