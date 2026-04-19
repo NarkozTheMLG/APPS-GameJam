@@ -8,12 +8,12 @@ public class TutorialManager : MonoBehaviour
 
     [Header("UI Elements")]
     public GameObject darkScreenPanel;
-    public GameObject gridDarkPannel; // ADDED: So the grid shade works!
     public GameObject tutorialBubble;
     public TextMeshProUGUI bubbleText;
 
+
     [Header("Fallback Settings")]
-    // This is just a fallback in case you ever forget to assign an anchor
+    // Tweak these numbers in the Inspector! Positive X is right, Positive Y is up.
     public Vector3 bubbleOffset = new Vector3(0f, 50f, 0f);
 
     private void Awake()
@@ -22,13 +22,12 @@ public class TutorialManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // UPDATED: Now accepts the grid shade flag and the explicit Anchor location!
-    public void StartTutorialStep(GameObject targetElement, string instruction, bool useShade = true, bool useGridShade = false, Transform explicitBubbleLocation = null)
+    // REMOVED useGridShade. Now it only takes the target, text, shade bool, and anchor!
+    public void StartTutorialStep(GameObject targetElement, string instruction, bool useShade = true, Transform explicitBubbleLocation = null)
     {
         Time.timeScale = 0f;
 
         if (darkScreenPanel) darkScreenPanel.SetActive(useShade);
-        if (gridDarkPannel && useGridShade) gridDarkPannel.SetActive(useGridShade);
 
         if (tutorialBubble) tutorialBubble.SetActive(true);
         if (bubbleText) bubbleText.text = instruction;
@@ -53,19 +52,21 @@ public class TutorialManager : MonoBehaviour
         Canvas targetCanvas = targetElement.GetComponent<Canvas>();
         if (targetCanvas != null)
         {
-            targetCanvas.overrideSorting = useShade || useGridShade;
-            targetCanvas.sortingOrder = (useShade || useGridShade) ? 101 : 0;
+            targetCanvas.overrideSorting = useShade;
+            targetCanvas.sortingOrder = useShade ? 101 : 0;
         }
     }
 
     public void EndTutorialStep(GameObject targetElement)
     {
+        // Unfreeze Time
         Time.timeScale = 1f;
 
+        // Hide tutorial UI
         if (darkScreenPanel) darkScreenPanel.SetActive(false);
-        if (gridDarkPannel) gridDarkPannel.SetActive(false); // Make sure grid shade turns off!
         if (tutorialBubble) tutorialBubble.SetActive(false);
 
+        // Push the target element back behind the dark screen
         Canvas targetCanvas = targetElement.GetComponent<Canvas>();
         if (targetCanvas != null)
         {

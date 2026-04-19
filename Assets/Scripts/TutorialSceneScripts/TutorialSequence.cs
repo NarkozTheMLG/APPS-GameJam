@@ -66,25 +66,25 @@ public class TutorialSequence : MonoBehaviour
         // --- THE CINEMATIC INTRO ---
 
         // Passed: true (main shade), false (grid shade), timerAnchor
-        TutorialManager.Instance.StartTutorialStep(timerUI, "Keep an eye on the timer! I made a time froze spell for this turn.", true, false, timerAnchor);
+        TutorialManager.Instance.StartTutorialStep(timerUI, "Keep an eye on the timer!", true, timerAnchor);
         yield return new WaitForSecondsRealtime(3f);
         TutorialManager.Instance.EndTutorialStep(timerUI);
         yield return new WaitForSecondsRealtime(0.5f);
 
         // Passed: customerRatioAnchor
-        TutorialManager.Instance.StartTutorialStep(CustomerRatio, "You can see the number of waiting customers here.", true, false, customerRatioAnchor);
+        TutorialManager.Instance.StartTutorialStep(CustomerRatio, "You can see the number of waiting customers here.", true, customerRatioAnchor);
         yield return new WaitForSecondsRealtime(3f);
         TutorialManager.Instance.EndTutorialStep(CustomerRatio);
         yield return new WaitForSecondsRealtime(0.5f);
 
         // Passed: OrderedRecipitAnchor
-        TutorialManager.Instance.StartTutorialStep(OrderedRecipit, "The orders shown in here.", true, false, OrderedRecipitAnchor);
+        TutorialManager.Instance.StartTutorialStep(OrderedRecipit, "The orders shown in here.", true, OrderedRecipitAnchor);
         yield return new WaitForSecondsRealtime(3f);
         TutorialManager.Instance.EndTutorialStep(OrderedRecipit);
         yield return new WaitForSecondsRealtime(0.5f);
 
         // Passed: spellBookAnchor
-        TutorialManager.Instance.StartTutorialStep(SpellNotes, "You can check my spell notes if you forget the ingredient spells!", true, false, spellBookAnchor);
+        TutorialManager.Instance.StartTutorialStep(SpellNotes, "You can check my spell notes if you forget the ingredient spells!", true,spellBookAnchor);
         yield return new WaitForSecondsRealtime(3f);
         TutorialManager.Instance.EndTutorialStep(SpellNotes);
         yield return new WaitForSecondsRealtime(0.5f);
@@ -107,7 +107,7 @@ public class TutorialSequence : MonoBehaviour
         currentButton.GetComponent<Button>().interactable = true;
 
         // Passed: spellAnchors array!
-        TutorialManager.Instance.StartTutorialStep(currentButton, spellStepInstructions[currentStepIndex], true, false, spellAnchors[currentStepIndex]);
+        TutorialManager.Instance.StartTutorialStep(currentButton, spellStepInstructions[currentStepIndex], true,spellAnchors[currentStepIndex]);
     }
 
     public void OnSpellSelected()
@@ -150,15 +150,7 @@ public class TutorialSequence : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.1f);
 
-        // Restored Grid Shade logic and passed the gridAnchor!
-        if (currentButton == rowColumnAttack)
-        {
-            TutorialManager.Instance.StartTutorialStep(gridCanvas, BlockStepInstructions[currentStepIndex], false, true, gridAnchor);
-        }
-        else
-        {
-            TutorialManager.Instance.StartTutorialStep(gridCanvas, BlockStepInstructions[currentStepIndex], false, false, gridAnchor);
-        }
+        TutorialManager.Instance.StartTutorialStep(gridCanvas, BlockStepInstructions[currentStepIndex], false, gridAnchor);
 
         isTransitioning = false;
     }
