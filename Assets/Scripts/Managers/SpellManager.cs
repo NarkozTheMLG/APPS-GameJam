@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+
 public enum WizardSpells
 {
     BreakSingle,
@@ -11,6 +13,19 @@ public enum WizardSpells
 
 public class SpellManager : MonoBehaviour
 {
+    
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip laserSound;
+
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+    
     public static SpellManager Instance; 
 
     public WizardSpells currentSpell;
@@ -112,6 +127,7 @@ public class SpellManager : MonoBehaviour
                     break;
                 }
             if (!shoot) return;
+            PlaySFX(laserSound);
             GridManagerSystem.Instance.BreakColumn(index);
         }
         else
@@ -124,6 +140,7 @@ public class SpellManager : MonoBehaviour
                     break;
                 }
             if (!shoot) return;
+            PlaySFX(laserSound);
             GridManagerSystem.Instance.BreakRow(index);
         }
 

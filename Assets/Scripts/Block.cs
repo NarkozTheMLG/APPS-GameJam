@@ -13,6 +13,19 @@ public enum BlockColors
 }
 
 public class Block : MonoBehaviour,IPointerClickHandler{
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip breakSound;
+    public AudioClip paintSound;
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.25f);
+            audioSource.PlayOneShot(clip);    
+        }
+    }
+    
     [Header("Effects")]
     [SerializeField] private GameObject burstPrefab; 
     [SerializeField] private Sprite shardSprite;
@@ -30,8 +43,9 @@ public class Block : MonoBehaviour,IPointerClickHandler{
 
 public void SetColor(BlockColors newColor)
     {
-        this.color = newColor; 
-    
+        
+        this.color = newColor;
+        PlaySFX(paintSound);
         StopAllCoroutines();
         StartCoroutine(AnimateTransformation(newColor));
     }
@@ -115,6 +129,7 @@ public void SetColor(BlockColors newColor)
         if (!isActive) return; 
 
         isActive = false;
+        PlaySFX(breakSound);
         if (burstPrefab != null)
         {
             GameObject burstObj = Instantiate(burstPrefab, transform.parent);
