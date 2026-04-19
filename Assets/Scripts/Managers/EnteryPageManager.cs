@@ -19,7 +19,13 @@ public class EnteryPageManager : MonoBehaviour
 
     void Start()
     {
-        CurrentLevelCallender.sprite = GameManager.Instance.AllLevelDatas[GameManager.Instance.CurrentLevel - 1].LevelTable;
+        // if there is a tuttorial we need to modify the index for the sprite
+        int temp = GameManager.Instance.CurrentLevel;
+        if (temp <= 0){
+            temp = 1;
+        }
+
+        CurrentLevelCallender.sprite = GameManager.Instance.AllLevelDatas[temp - 1].LevelTable;
     }
 
     private void Update()

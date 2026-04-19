@@ -27,13 +27,21 @@ public class GameManager : MonoBehaviour
     [Header("Level Info")]
     public LevelData[] AllLevelDatas;
 
+    [Header("Open Tutorial")]
+    public bool OpenTutorial = true;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
             CurrentLevel = 1;
+            if (OpenTutorial) {
+                CurrentLevel = 0;
+            }
+            
             AvailableHart = 3;
 
             if (WaitTimeForHart <= 0) WaitTimeForHart = 50;
