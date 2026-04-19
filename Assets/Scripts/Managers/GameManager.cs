@@ -90,16 +90,16 @@ public class GameManager : MonoBehaviour
                 CurrentLevel = AllLevelDatas.Length;
             }
 
-            if (CurrentLevel == 1) {
+            if (CurrentLevel == 0) {
                 SceneManager.LoadScene("Tutorial");
             }
-            else if(CurrentLevel == 2)
+            else if(CurrentLevel == 1)
             {
                 SceneManager.LoadScene("Level_1");
             }
-            else if(CurrentLevel == 3)
+            else if(CurrentLevel == 2)
             {
-                SceneManager.LoadScene("Level_3");
+                SceneManager.LoadScene("Level_2");
             }
                 
         }

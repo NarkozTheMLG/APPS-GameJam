@@ -1,16 +1,37 @@
 fileFormatVersion: 2
-guid: 1d5bf125df7dacf4696327e370d21565
+guid: d5c92f6deabaa4e47ada95289eb52ea3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8953108622875232570
-    second: boyama button_0
+      213: -1293234192208552870
+    second: laser _0
   - first:
-      213: 4628530244590191624
-    second: boyama button_1
+      213: -8275701932228588342
+    second: laser _1
   - first:
-      213: 7955249098817960891
-    second: boyama button_2
+      213: 4225050138223146032
+    second: laser _2
+  - first:
+      213: -5205804059163425102
+    second: laser _3
+  - first:
+      213: 8707921901833474026
+    second: laser _4
+  - first:
+      213: 8482210153531489984
+    second: laser _5
+  - first:
+      213: -5479985935072731079
+    second: laser _6
+  - first:
+      213: -5405023795938132686
+    second: laser _7
+  - first:
+      213: -4104309947060397353
+    second: laser _8
+  - first:
+      213: 3087480218317592393
+    second: laser _9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,12 +99,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 100
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -119,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boyama button_1
+      name: laser _7
       rect:
         serializedVersion: 2
-        x: 264
-        y: 1132
-        width: 1055
-        height: 716
+        x: 121
+        y: 178
+        width: 3309
+        height: 571
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,30 +155,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80443f40cb7db3040800000000000000
-      internalID: 4628530244590191624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boyama button_2
-      rect:
-        serializedVersion: 2
-        x: 1315
-        y: 1281
-        width: 6
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bbb7aca18e8b66e60800000000000000
-      internalID: 7955249098817960891
+      spriteID: 23df290ae7f7df4b0800000000000000
+      internalID: -5405023795938132686
       vertices: []
       indices: 
       edges: []
@@ -166,7 +165,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 238742cefba32424c8cb8cc204b7818c
+    spriteID: 5575ffe4801064e029580b4c0e878125
     internalID: 0
     vertices: []
     indices: 
@@ -176,10 +175,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boyama button_0: -8953108622875232570
-      boyama button_1: 4628530244590191624
-      boyama button_2: 7955249098817960891
-      boyama button_3: 1613799573
+      laser _0: -1293234192208552870
+      laser _1: -8275701932228588342
+      laser _2: 4225050138223146032
+      laser _3: -5205804059163425102
+      laser _4: 8707921901833474026
+      laser _5: 8482210153531489984
+      laser _6: -5479985935072731079
+      laser _7: -5405023795938132686
+      laser _8: -4104309947060397353
+      laser _9: 3087480218317592393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

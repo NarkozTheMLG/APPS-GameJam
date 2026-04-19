@@ -1504,7 +1504,7 @@ MonoBehaviour:
   AllLevelDatas:
   - OrderedRecipes:
     - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
-    TimeLimit: 3000
+    TimeLimit: 120
     LevelTable: {fileID: -3694604642435081948, guid: da651adcc87f82a449a37f4f8231eb6f, type: 3}
   - OrderedRecipes:
     - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}

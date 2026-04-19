@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.6714578, b: 0.6714578, a: 1}
+  m_Color: {r: 0.6037736, g: 0.5496618, b: 0.5496618, a: 0.9490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5943396, g: 0.5915361, b: 0.5915361, a: 1}
+  m_Color: {r: 0.5188679, g: 0.5017355, b: 0.5017355, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5995403859175798065, guid: 2ff183780618d42429367fe2adc396cf, type: 3}
+  m_Sprite: {fileID: -244655149664425588, guid: 67e949f17647e4dffbe9641d00582487, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1541,6 +1541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GridManagerSystem
   audioSource: {fileID: 7472056858486922989}
   paintSound: {fileID: 8300000, guid: 620a890dfea284a32ab7d3cdaf8d6353, type: 3}
+  arrowVFXPrefab: {fileID: 1792453446366587232, guid: f939546358e60469fa5d2d72f46b1c42, type: 3}
+  mainUICanvas: {fileID: 9023575389185710932}
   blockPrefab: {fileID: 300734587135505530, guid: 16db918d73666472aba493e8f8a9adc4, type: 3}
   cellSize: 84
   spacing: 0

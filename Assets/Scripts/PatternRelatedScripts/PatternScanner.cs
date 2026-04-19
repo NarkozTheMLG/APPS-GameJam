@@ -2,7 +2,24 @@ using UnityEngine;
 
 public class PatternScanner : MonoBehaviour
 {
+    
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+
+    public AudioClip matchSound;
+    
+    private void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.25f);
+            audioSource.PlayOneShot(clip);    
+        }
+    }
     public static PatternScanner Instance;
+    [Header("VFX Settings")]
+    public GameObject flyPrefab; 
+    public Canvas uiCanvas;    
 
     void Awake()
     {
@@ -55,8 +72,25 @@ public class PatternScanner : MonoBehaviour
         return true;
     }
 
+ 
     private void ProcessMatch(int startX, int startY, int recipeIndex)
     {
+        
+        PlaySFX(matchSound);
+        
+        Canvas localCanvas = FindFirstObjectByType<Canvas>();
+    
+        Vector3 worldCenter = GridManagerSystem.Grids[startX + 1, startY + 1].transform.position;
+    
+        Vector2 screenPoint = Camera.main.WorldToScreenPoint(worldCenter);
+    
+        Vector3 targetPos = LevelGoalManager.Instance.ingredientIcons[recipeIndex].transform.position;
+
+        GameObject flyObj = Instantiate(flyPrefab, localCanvas.transform);
+        IngredientFlyEffect effect = flyObj.GetComponent<IngredientFlyEffect>();
+    
+        Sprite ingredientSprite = LevelGoalManager.Instance.activeRecipes[recipeIndex].IngredientImage;
+
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -64,8 +98,10 @@ public class PatternScanner : MonoBehaviour
                 GridManagerSystem.Grids[startX + i, startY + j].BreakBlock();
             }
         }
-
-        LevelGoalManager.Instance.IngredientMatched(recipeIndex);
-        SpellManager.Instance.UpdateArrowVisibility();
+        effect.StartFly(screenPoint, targetPos, localCanvas, ingredientSprite, () => {
+            LevelGoalManager.Instance.IngredientMatched(recipeIndex);
+            SpellManager.Instance.UpdateArrowVisibility();
+        });
+       
     }
 }

@@ -78,6 +78,10 @@ public class LevelGoalManager : MonoBehaviour
                 checkmarkStatusUI[i].gameObject.SetActive(false);
             }
         }
+if (RecipitDataManager.Instance != null)
+    {
+        RecipitDataManager.Instance.RefreshRequiredIngredients();
+    }
     }
 
     public void IngredientMatched(int index)

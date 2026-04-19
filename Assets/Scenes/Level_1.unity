@@ -845,6 +845,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3708876300315007510, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
+      propertyPath: uiCanvas
+      value: 
+      objectReference: {fileID: 9023575389185710932, guid: 8eb6ca04577614a29ad1c4da1ce05431, type: 3}
+    - target: {fileID: 3708876300315007510, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
+      propertyPath: flyPrefab
+      value: 
+      objectReference: {fileID: 487206547686099645, guid: cee2b07f9d78e4ec8a903a3e094874a8, type: 3}
     - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
       propertyPath: currentRecipe
       value: 

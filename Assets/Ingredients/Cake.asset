@@ -17,7 +17,7 @@ MonoBehaviour:
   ingredientBlock: {fileID: 3639183992173706164, guid: 326327987b636e841879060334513902, type: 3}
   notAvailableIngredientImage: {fileID: 2840336364714655594, guid: e2bb1cd46e5dde94a871bfef0c08aa60, type: 3}
   notAvailableIngredientBlockImage: {fileID: 5253393909761604178, guid: 146d62bfc9ad1d247898339152cab0e8, type: 3}
-  ingredientEnabled: 1
+  ingredientEnabled: 0
   rows:
   - columns: 020000000200000002000000
   - columns: 020000000400000002000000

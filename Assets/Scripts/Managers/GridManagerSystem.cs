@@ -10,6 +10,11 @@ public class GridManagerSystem : MonoBehaviour
     public AudioClip paintSound;
     public static GridManagerSystem Instance; 
 
+[Header("VFX")]
+
+public GameObject arrowVFXPrefab; 
+[Header("UI References")]
+public Canvas mainUICanvas; 
     public const int ROWSIZE = 9;
     public const int COLUMNSIZE = 10;
 
@@ -135,36 +140,61 @@ public class GridManagerSystem : MonoBehaviour
         StartCoroutine(AnimateRowBreak(y));
     }
 
-    private IEnumerator AnimateRowBreak(int y)
-    {
-        for (int i = 0; i < ROWSIZE; i++)
-        {
-            if (IsInsideGrid(i, y) && Grids[i, y].isActive)
-            {
-                Grids[i, y].BreakBlock();
-                yield return new WaitForSeconds(0.03f); 
-                SpellManager.Instance.UpdateArrowVisibility();
-            }
-        }
-    }
 
     public void BreakColumn(int x)
     {
         StartCoroutine(AnimateColumnBreak(x));
     }
 
-    private IEnumerator AnimateColumnBreak(int x)
+
+
+
+private IEnumerator AnimateRowBreak(int y)
+{
+    GameObject arrow = Instantiate(arrowVFXPrefab, mainUICanvas.transform);
+
+
+    for (int i = 0; i < ROWSIZE; i++)
     {
-        for (int j = COLUMNSIZE; j >= 0; j--)
+        if (IsInsideGrid(i, y))
         {
-            if (IsInsideGrid(x, j) && Grids[x, j].isActive)
+            arrow.transform.position = Grids[i, y].transform.position;
+
+            if (Grids[i, y].isActive)
             {
-                Grids[x, j].BreakBlock();
-                yield return new WaitForSeconds(0.03f);
-                SpellManager.Instance.UpdateArrowVisibility();
+                Grids[i, y].BreakBlock();
+                yield return new WaitForSeconds(0.05f);
             }
         }
     }
+    Destroy(arrow);
+}
+private IEnumerator AnimateColumnBreak(int x)
+{
+    if (mainUICanvas == null) yield break;
+
+    GameObject arrow = Instantiate(arrowVFXPrefab, mainUICanvas.transform);
+    arrow.transform.SetAsLastSibling();
+    
+    arrow.transform.localRotation = Quaternion.Euler(0, 0, -90); 
+
+    for (int j = COLUMNSIZE - 1; j >= 0; j--)
+    {
+        if (IsInsideGrid(x, j))
+        {
+            arrow.transform.position = Grids[x, j].transform.position;
+
+            if (Grids[x, j].isActive)
+            {
+                Grids[x, j].BreakBlock();
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+    }
+
+    Destroy(arrow);
+    SpellManager.Instance.UpdateArrowVisibility();
+}
 
     public void Paint(int x, int y, BlockColors newColor)
     {
