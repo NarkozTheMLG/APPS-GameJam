@@ -84,10 +84,20 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        if (AvailableHart > 0) 
+        if (AvailableHart > 0)
         {
-            if (CurrentLevel > AllLevelDatas.Length) CurrentLevel = AllLevelDatas.Length;
-            SceneManager.LoadScene("Level_1");
+            if (CurrentLevel > AllLevelDatas.Length) {
+                CurrentLevel = AllLevelDatas.Length;
+            }
+
+            if (CurrentLevel == 1) {
+                SceneManager.LoadScene("Tutorial");
+            }
+            else
+            {
+                SceneManager.LoadScene("Level_1");
+            }
+                
         }
     }
 

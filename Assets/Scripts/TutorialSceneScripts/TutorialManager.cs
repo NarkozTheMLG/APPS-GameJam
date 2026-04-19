@@ -13,55 +13,54 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
-        // If there is no instance yet, make this the instance
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            // If another TutorialManager somehow exists, destroy this duplicate
-            Destroy(gameObject);
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
 
-    // Call this when a tutorial step starts
-    public void StartTutorialStep(GameObject targetElement, string instruction)
+    public void StartTutorialStep(GameObject targetElement, string instruction, bool useShade = true)
     {
         Time.timeScale = 0f;
-        darkScreenPanel.SetActive(true);
-        tutorialBubble.SetActive(true);
-        bubbleText.text = instruction;
 
-        // Move bubble near the target (You may need to offset this so it doesn't cover the button!)
-        tutorialBubble.transform.position = targetElement.transform.position + new Vector3(0, 100, 0);
+        if (darkScreenPanel) darkScreenPanel.SetActive(useShade);
+        if (tutorialBubble) tutorialBubble.SetActive(true);
+        if (bubbleText) bubbleText.text = instruction;
 
-        // 4. Pop the target element through the dark screen
-        Canvas targetCanvas = targetElement.GetComponent<Canvas>();
-        if (targetCanvas == null)
+        // --- NEW: CENTER THE BUBBLE ---
+        RectTransform bubbleRect = tutorialBubble.GetComponent<RectTransform>();
+        if (bubbleRect != null)
         {
-            targetCanvas = targetElement.AddComponent<Canvas>();
-            targetElement.AddComponent<GraphicRaycaster>(); // Needed for clicking
+            // 1. Ensure anchors are centered (optional but recommended to do in code)
+            bubbleRect.anchorMin = new Vector2(0.5f, 0.5f);
+            bubbleRect.anchorMax = new Vector2(0.5f, 0.5f);
+            bubbleRect.pivot = new Vector2(0.5f, 0.5f);
+
+            // 2. Set position to (0,0) relative to the center
+            bubbleRect.anchoredPosition = Vector2.zero;
         }
 
-        targetCanvas.overrideSorting = true;
-        targetCanvas.sortingOrder = 101;
+        // --- HANDLE HIGHLIGHTING ---
+        Canvas targetCanvas = targetElement.GetComponent<Canvas>();
+        if (targetCanvas != null)
+        {
+            targetCanvas.overrideSorting = useShade;
+            targetCanvas.sortingOrder = useShade ? 101 : 0;
+        }
     }
 
-    // Call this via an Event or Button OnClick when the player does the right thing
     public void EndTutorialStep(GameObject targetElement)
     {
-        // 1. Unfreeze Time
+        // Unfreeze Time
         Time.timeScale = 1f;
 
-        // 2. Hide tutorial UI
-        darkScreenPanel.SetActive(false);
-        tutorialBubble.SetActive(false);
+        // Hide tutorial UI
+        if (darkScreenPanel) darkScreenPanel.SetActive(false);
+        if (tutorialBubble) tutorialBubble.SetActive(false);
 
-        // 3. Push the target element back behind the dark screen
-        if (targetElement.GetComponent<Canvas>() != null)
+        // Push the target element back behind the dark screen
+        Canvas targetCanvas = targetElement.GetComponent<Canvas>();
+        if (targetCanvas != null)
         {
-            targetElement.GetComponent<Canvas>().overrideSorting = false;
+            targetCanvas.overrideSorting = false;
         }
     }
 }

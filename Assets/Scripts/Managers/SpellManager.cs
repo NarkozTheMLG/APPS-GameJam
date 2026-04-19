@@ -154,23 +154,40 @@ public class SpellManager : MonoBehaviour
         GridManagerSystem.Grids[xIndex, yIndex].RestoreBlock();
         StartCoroutine(WaitAndScan());
     }
-    
+
+    // BURAYA TUTORIAL YAP
     // BURAYA TUTORIAL YAP
     private System.Collections.IEnumerator WaitAndScan()
     {
-        float delay = 1f;
-        yield return new WaitForSeconds(delay);
+        TutorialSequence currentTutorial = Object.FindFirstObjectByType<TutorialSequence>();
+
+        if (currentTutorial != null)
+        {
+            // Unfreeze time so the game can breathe
+            TutorialManager.Instance.EndTutorialStep(currentTutorial.gridCanvas);
+        }
+
+        Debug.Log("Waiting for blocks");
+
+        // CRITICAL FIX: Realtime ensures the scan happens even if time glitches!
+        yield return new WaitForSecondsRealtime(1f);
+
         if (PatternScanner.Instance != null)
         {
             PatternScanner.Instance.ScanForMatches();
-            
         }
         else
         {
-            Debug.Log("Pattern Scanner not found");
+            Debug.LogWarning("PatternScanner Instance is null!");
+        }
+
+        if (currentTutorial != null)
+        {
+            // Tell the tutorial to move forward
+            currentTutorial.OnGridActionCompleted();
         }
     }
-    
+
     // --- UI HELPERS ---
 
     public float GetRemainingCooldown(WizardSpells spell)
