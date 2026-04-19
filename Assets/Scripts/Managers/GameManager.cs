@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 [System.Serializable]
 public struct LevelData
 {
@@ -20,18 +19,13 @@ public class GameManager : MonoBehaviour
     [Header("Hart System")]
     public int TotalHartNumber;
     public float WaitTimeForHart;
+    
     [Header("DO NOT TOUCH")]
     public int AvailableHart;
-    
-
-
-    [Header("DO NOT TOUCH")]
     public float timeLeftForNextHart;
-    
 
-    [Header("Level info")]
+    [Header("Level Info")]
     public LevelData[] AllLevelDatas;
-
 
     private void Awake()
     {
@@ -42,13 +36,8 @@ public class GameManager : MonoBehaviour
             CurrentLevel = 1;
             AvailableHart = 3;
 
-            if (WaitTimeForHart <= 0) {
-                WaitTimeForHart = 50;
-            }
-
-            if (TotalHartNumber <= 0) {
-                TotalHartNumber = 3;
-            }
+            if (WaitTimeForHart <= 0) WaitTimeForHart = 50;
+            if (TotalHartNumber <= 0) TotalHartNumber = 3;
         }
         else
         {
@@ -56,20 +45,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IngredientData[] getEnabledIngredients() {
+    public IngredientData[] getEnabledIngredients() 
+    {
         int counter = 0;
         for (int i = 0; i < allIngredients.Length; i++)
         {
-            if (allIngredients[i].ingredientEnabled)
-            {
-                counter++;
-            }
+            if (allIngredients[i].ingredientEnabled) counter++;
         }
 
         IngredientData[] result = new IngredientData[counter];
-
         int index = 0;
-        for (int i = 0; i < allIngredients.Length; i++) {
+        for (int i = 0; i < allIngredients.Length; i++) 
+        {
             if (allIngredients[i].ingredientEnabled)
             {
                 result[index] = allIngredients[i];
@@ -81,47 +68,27 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // there are some emoty harts
-        if (AvailableHart < TotalHartNumber) {
-            // start the timer for a hart
+        if (AvailableHart < TotalHartNumber) 
+        {
             if (timeLeftForNextHart <= 0)
             {
                 timeLeftForNextHart = WaitTimeForHart;
             }
-
-            // continue the previous timer
-            else {
-                timeLeftForNextHart = timeLeftForNextHart - Time.deltaTime;
-                // now one hart completed its time
-                if (timeLeftForNextHart <= 0)
-                {
-                    AvailableHart++;
-                }
+            else 
+            {
+                timeLeftForNextHart -= Time.deltaTime;
+                if (timeLeftForNextHart <= 0) AvailableHart++;
             }
         }
     }
 
     public void LoadLevel()
     {
-        // TODO if there is no harts spawn a warning
-        if (AvailableHart > 0) {
-            if (CurrentLevel > AllLevelDatas.Length)
-            {
-                // All Levels are done
-                CurrentLevel = AllLevelDatas.Length;
-            }
-
+        if (AvailableHart > 0) 
+        {
+            if (CurrentLevel > AllLevelDatas.Length) CurrentLevel = AllLevelDatas.Length;
             SceneManager.LoadScene("Level_1");
         }
-
-    }
-
-    public void LoadSpellBook() {
-        SceneManager.LoadScene("SpellBookScene");
-    }
-
-    public void ReturnEnteryScene() {
-        SceneManager.LoadScene("GameEntery");
     }
 
     public void CloseLevelWin()
@@ -132,12 +99,10 @@ public class GameManager : MonoBehaviour
 
     public void CloseLevelLose()
     {
-        AvailableHart--;
-        if (AvailableHart < 0)
-        {
-            AvailableHart = 0;
-        }
-
+        AvailableHart = Mathf.Max(0, AvailableHart - 1);
         SceneManager.LoadScene("GameEntery");
     }
+
+    public void LoadSpellBook() => SceneManager.LoadScene("SpellBookScene");
+    public void ReturnEnteryScene() => SceneManager.LoadScene("GameEntery");
 }

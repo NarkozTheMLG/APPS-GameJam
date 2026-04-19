@@ -117,7 +117,6 @@ public class SpellManager : MonoBehaviour
         else
         {
             bool shoot=false;
-            Debug.Log(index);
             for (int i = 0; i < GridManagerSystem.COLUMNSIZE; i++)
                 if (GridManagerSystem.Grids[i, index].isActive)
                 {
@@ -142,18 +141,16 @@ public class SpellManager : MonoBehaviour
     // BURAYA TUTORIAL YAP
     private System.Collections.IEnumerator WaitAndScan()
     {
-        Debug.Log("Waiting for blocks");
         float delay = 1f;
         yield return new WaitForSeconds(delay);
         if (PatternScanner.Instance != null)
         {
-            Debug.Log("Scanning for blocks");
             PatternScanner.Instance.ScanForMatches();
             
         }
         else
         {
-            Debug.Log("Bruh");
+            Debug.Log("Pattern Scanner not found");
         }
     }
     

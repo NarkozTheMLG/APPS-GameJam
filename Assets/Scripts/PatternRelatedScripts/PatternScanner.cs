@@ -33,7 +33,6 @@ public class PatternScanner : MonoBehaviour
     }
     private bool CheckIndividualMatch(int startX, int startY, IngredientData pattern)
     {
-        Debug.Log("CheckIndividualMatch for "+pattern.ingredientName);
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -52,7 +51,7 @@ public class PatternScanner : MonoBehaviour
             }
         }
 
-        Debug.Log("RETURNED TRUE");
+        Debug.Log("You have matched: "+pattern.ingredientName);
         return true;
     }
 

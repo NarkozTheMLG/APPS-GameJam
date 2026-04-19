@@ -15,6 +15,6 @@ MonoBehaviour:
   recipeName: Hamburger
   FoodSprite: {fileID: 8388100693756106458, guid: 5eab53efedacefc4b84fad24ac5aca7a, type: 3}
   ingredientsNeeded:
+  - {fileID: 11400000, guid: 951eaa065810d074794e6354d5c5880d, type: 2}
   - {fileID: 11400000, guid: 59e9e5a157a89564790907ce3c0e3c15, type: 2}
   - {fileID: 11400000, guid: 5ff65f7d88709044d90d92ad4e6dd09a, type: 2}
-  - {fileID: 11400000, guid: 951eaa065810d074794e6354d5c5880d, type: 2}

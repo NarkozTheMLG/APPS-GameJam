@@ -203,16 +203,20 @@ public class GridManagerSystem : MonoBehaviour
             }
         }
     }
-
+    public bool canSnap = true; 
     public void ThanosSnapAll()
     {
+        if (!canSnap) return;
         StartCoroutine(SnapSequence());
     }
     private IEnumerator SnapSequence()
     {
+        canSnap = false;
         yield return StartCoroutine(SnapSpread(Random.Range(0,ROWSIZE), Random.Range(0,COLUMNSIZE)));
-        yield return new WaitForSeconds(0.25f); 
+        yield return new WaitForSeconds(0.35f); 
         GenerateGrid();
+        yield return new WaitForSeconds(0.25f); 
+        canSnap = true;
     }
     private IEnumerator SnapSpread(int startX, int startY)
     {
