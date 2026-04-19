@@ -93,9 +93,13 @@ public class GameManager : MonoBehaviour
             if (CurrentLevel == 1) {
                 SceneManager.LoadScene("Tutorial");
             }
-            else
+            else if(CurrentLevel == 2)
             {
                 SceneManager.LoadScene("Level_1");
+            }
+            else if(CurrentLevel == 3)
+            {
+                SceneManager.LoadScene("Level_3");
             }
                 
         }

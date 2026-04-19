@@ -1511,6 +1511,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e71553aceccda704c9ab683bc4d58d15, type: 2}
     TimeLimit: 3000
     LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
+  - OrderedRecipes:
+    - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
+    TimeLimit: 555
+    LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
 --- !u!1 &1617695673
 GameObject:
   m_ObjectHideFlags: 0
