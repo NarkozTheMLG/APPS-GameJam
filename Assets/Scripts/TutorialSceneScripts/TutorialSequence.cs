@@ -84,7 +84,7 @@ public class TutorialSequence : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
 
         // Passed: spellBookAnchor
-        TutorialManager.Instance.StartTutorialStep(SpellNotes, "You can check my spell notes if you forget the ingredient spells!", true,spellBookAnchor);
+        TutorialManager.Instance.StartTutorialStep(SpellNotes, "When you forget the ingredient spells, here is my notes!", true,spellBookAnchor);
         yield return new WaitForSecondsRealtime(3f);
         TutorialManager.Instance.EndTutorialStep(SpellNotes);
         yield return new WaitForSecondsRealtime(0.5f);
