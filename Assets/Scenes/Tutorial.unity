@@ -955,6 +955,11 @@ RectTransform:
   m_AnchoredPosition: {x: -348, y: -419}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &1295272854 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6895978025066907077, guid: f00efc0814caf495382b5b044557a3a5, type: 3}
+  m_PrefabInstance: {fileID: 5258144472674943194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1355640536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1625,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3708876300315007510, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
+      propertyPath: uiCanvas
+      value: 
+      objectReference: {fileID: 1295272854}
     - target: {fileID: 8579327322948196548, guid: 015b18ce04fa1478893209938454fe2f, type: 3}
       propertyPath: foodDisplayIcon
       value: 
