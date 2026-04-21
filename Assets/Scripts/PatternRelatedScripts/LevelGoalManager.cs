@@ -19,7 +19,9 @@ public class LevelGoalManager : MonoBehaviour
     public Sprite completedSprite; 
 
     [HideInInspector] public Recipe currentRecipe;
-    [HideInInspector] public IngredientData[] activeRecipes;
+    
+    // KEEP THIS AS IngredientData[] so PatternScanner doesn't collapse
+    [HideInInspector] public IngredientData[] activeRecipes; 
     [HideInInspector] public bool[] isIngredientComplete;
 
     private int recipeIndex = 0; 
@@ -29,15 +31,13 @@ public class LevelGoalManager : MonoBehaviour
 
     private void Start()
     {
-        int levelIndex;
-        if (GameManager.Instance.OpenTutorial) {
-            levelIndex = 0;
-        }
-        else
-        {
-            levelIndex = Mathf.Clamp(GameManager.Instance.CurrentLevel - 1, 0, GameManager.Instance.AllLevelDatas.Length - 1);
-        }
-            
+        // FIX: Remove the "- 1" so Level 1 points to Element 1 (Pizza)
+        int levelIndex = GameManager.Instance.CurrentLevel;
+        
+        // Safety: Prevent index out of bounds
+        if (levelIndex >= GameManager.Instance.AllLevelDatas.Length)
+            levelIndex = GameManager.Instance.AllLevelDatas.Length - 1;
+
         currentLevelData = GameManager.Instance.AllLevelDatas[levelIndex];
         
         LoadCurrentRecipe();
@@ -54,10 +54,7 @@ public class LevelGoalManager : MonoBehaviour
         else
         {
             Debug.Log("LEVEL COMPLETE!");
-        
-            if (PatternScanner.Instance != null) 
-                PatternScanner.Instance.enabled = false;
-
+            if (PatternScanner.Instance != null) PatternScanner.Instance.enabled = false;
             GameManager.Instance.CloseLevelWin(); 
         }
     }
@@ -68,6 +65,7 @@ public class LevelGoalManager : MonoBehaviour
 
         if (foodDisplayIcon != null) foodDisplayIcon.sprite = currentRecipe.FoodSprite;
 
+        // THE TRANSLATOR: Unpack the Ingredients from the Recipe
         activeRecipes = currentRecipe.ingredientsNeeded;
         isIngredientComplete = new bool[activeRecipes.Length];
 
@@ -86,13 +84,15 @@ public class LevelGoalManager : MonoBehaviour
                 checkmarkStatusUI[i].gameObject.SetActive(false);
             }
         }
-if (RecipitDataManager.Instance != null)
-    {
-        RecipitDataManager.Instance.RefreshRequiredIngredients();
-    }
+
+        // Tell the visual notes to update based on these ingredients
+        if (RecipitDataManager.Instance != null)
+        {
+            RecipitDataManager.Instance.RefreshRequiredIngredients();
+        }
     }
 
-    public void IngredientMatched(int index)
+   public void IngredientMatched(int index)
     {
         if (index < 0 || index >= isIngredientComplete.Length) return;
         if (isIngredientComplete[index]) return;
@@ -121,3 +121,5 @@ if (RecipitDataManager.Instance != null)
         }
     }
 }
+
+ 

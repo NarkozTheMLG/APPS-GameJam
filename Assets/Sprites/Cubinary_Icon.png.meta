@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 90d684a1b72871343bc73afa17785510
+guid: 42407e999f6c74a7ab5d792d2232d1d1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7640134673520875451
-    second: CUSTOMER updated_0
+      213: -4218446578738360862
+    second: Cubinary_Icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CUSTOMER updated_0
+      name: Cubinary_Icon_0
       rect:
         serializedVersion: 2
-        x: 162
-        y: 71
-        width: 1314
-        height: 1297
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 548a4ac5ef9c8f590800000000000000
-      internalID: -7640134673520875451
+      spriteID: 2ed865adf211575c0800000000000000
+      internalID: -4218446578738360862
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CUSTOMER updated_0: -7640134673520875451
+      Cubinary_Icon_0: -4218446578738360862
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

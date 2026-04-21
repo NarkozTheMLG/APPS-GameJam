@@ -13,32 +13,29 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-	[Header("SFX Settings")]
-public AudioSource sfxSource;
+    [Header("SFX Settings")]
+    public AudioSource sfxSource;
 
-public void PlaySFX(AudioClip clip)
-{
-    if (clip != null && sfxSource != null)
+    public void PlaySFX(AudioClip clip)
     {
-        sfxSource.clip = clip;
-
-        sfxSource.pitch = Random.Range(0.85f, 1.2f);
-
-        sfxSource.Play();
+        if (clip != null && sfxSource != null)
+        {
+            sfxSource.clip = clip;
+            sfxSource.pitch = Random.Range(0.85f, 1.2f);
+            sfxSource.Play();
+        }
     }
-}
-	
+    
     public IngredientData[] allIngredients;
     public int CurrentLevel;
 
-    [Header("Hart System")]
+    [Header("Heart System")] // Renamed header for clarity, kept variable 'Hart' to match your project
     public int TotalHartNumber;
     public float WaitTimeForHart;
     
     [Header("DO NOT TOUCH")]
     public int AvailableHart;
     public float timeLeftForNextHart;
-
 
     [Header("Level Info")]
     public LevelData[] AllLevelDatas;
@@ -53,9 +50,11 @@ public void PlaySFX(AudioClip clip)
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            CurrentLevel = 1;
+            // Logic: Element 0 is Hamburger (Tutorial), Element 1 is Pizza (Level 1)
             if (OpenTutorial) {
-                CurrentLevel = 0;
+                CurrentLevel = 0; 
+            } else {
+                CurrentLevel = 1;
             }
             
             AvailableHart = 3;
@@ -110,31 +109,35 @@ public void PlaySFX(AudioClip clip)
     {
         if (AvailableHart > 0)
         {
-            if (CurrentLevel > AllLevelDatas.Length) {
-                CurrentLevel = AllLevelDatas.Length;
+            // Safety: Ensure CurrentLevel is within the AllLevelDatas array
+            if (CurrentLevel >= AllLevelDatas.Length) {
+                CurrentLevel = AllLevelDatas.Length - 1;
             }
-		MusicManager.Instance.PlayGameplayMusic();
-		
+
+            if (MusicManager.Instance != null)
+                MusicManager.Instance.PlayGameplayMusic();
+       
+            // DYNAMIC LOADING: 
+            // Level 0 (Hamburger) goes to "Tutorial" scene
+            // Level 1+ (Pizza, etc) goes to "Level" scene
             if (CurrentLevel == 0) {
                 SceneManager.LoadScene("Tutorial");
             }
-            else if(CurrentLevel == 1)
-            {
-                SceneManager.LoadScene("Level_1");
+            else {
+                SceneManager.LoadScene("Level"); 
             }
-            else if(CurrentLevel == 2)
-            {
-                SceneManager.LoadScene("Level_2");
-            }
-                
         }
     }
 
-    public void CloseLevelWin( )
+    public void CloseLevelWin()
     {
-        CurrentLevel++;
-		PlaySFX(sfxSource.clip);
-		MusicManager.Instance.PlayMenuMusic();
+        CurrentLevel++; // Increment for next level
+        
+        if (sfxSource.clip != null) PlaySFX(sfxSource.clip);
+        
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.PlayMenuMusic();
+            
         SceneManager.LoadScene("GameEntery");
     }
 

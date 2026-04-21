@@ -197,6 +197,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28507530}
   m_CullTransparentMesh: 1
+--- !u!1 &83980594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1731515875}
+  - component: {fileID: 1731515874}
+  - component: {fileID: 1731515873}
+  m_Layer: 5
+  m_Name: BGforWeb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &146466122
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,12 +329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ScreenMatchMode: 1
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -357,6 +375,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1731515875}
   - {fileID: 1617695674}
   - {fileID: 730490519}
   - {fileID: 532002802}
@@ -1511,12 +1530,31 @@ MonoBehaviour:
     LevelTable: {fileID: -3678053731107237469, guid: ac28e130a001d7a428f32cd347c6a6ce, type: 3}
   - OrderedRecipes:
     - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
-    TimeLimit: 500
+    TimeLimit: 300
     LevelTable: {fileID: 1731080161736690897, guid: 8436571a7e927004b91d49f2e1e03a52, type: 3}
   - OrderedRecipes:
     - {fileID: 11400000, guid: 3b52f8c242a0b6846b002631df0d64f5, type: 2}
     - {fileID: 11400000, guid: f29451dc8e812bb4193104fa7c8d121d, type: 2}
-    TimeLimit: 555
+    TimeLimit: 300
+    LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
+  - OrderedRecipes:
+    - {fileID: 11400000, guid: e71553aceccda704c9ab683bc4d58d15, type: 2}
+    - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
+    TimeLimit: 240
+    LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
+  - OrderedRecipes:
+    - {fileID: 11400000, guid: f29451dc8e812bb4193104fa7c8d121d, type: 2}
+    - {fileID: 11400000, guid: 3b52f8c242a0b6846b002631df0d64f5, type: 2}
+    - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
+    TimeLimit: 360
+    LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
+  - OrderedRecipes:
+    - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
+    - {fileID: 11400000, guid: 141b7d331360fb5469b8d0fd12a2c4b8, type: 2}
+    - {fileID: 11400000, guid: 3b52f8c242a0b6846b002631df0d64f5, type: 2}
+    - {fileID: 11400000, guid: e71553aceccda704c9ab683bc4d58d15, type: 2}
+    - {fileID: 11400000, guid: f29451dc8e812bb4193104fa7c8d121d, type: 2}
+    TimeLimit: 420
     LevelTable: {fileID: -5405940122772233618, guid: f93da8112188a8347b0a609cf77bfdc6, type: 3}
   OpenTutorial: 1
 --- !u!82 &1563858108
@@ -1688,6 +1726,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617695673}
   m_CullTransparentMesh: 1
+--- !u!114 &1731515873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83980594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6593746615646547895, guid: fa6e7818cdf81429c8aefc007f68ed11, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1731515874
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83980594}
+  m_CullTransparentMesh: 1
+--- !u!224 &1731515875
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83980594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 209881980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1743993300
 GameObject:
   m_ObjectHideFlags: 0
