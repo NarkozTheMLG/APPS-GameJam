@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0066e06ff3976764a9e82b7b715ed129, type: 3}
   m_Name: CheeseCake
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
-  recipeName: 
-  FoodSprite: {fileID: 0}
-  ingredientsNeeded: []
+  recipeName: CheeseCake
+  FoodSprite: {fileID: -749889528244588804, guid: 1f296e11399283a4b8f2f7c7c9ab2717, type: 3}
+  ingredientsNeeded:
+  - {fileID: 11400000, guid: 05cd3568cccd8b643a107a75c8c0d167, type: 2}
+  - {fileID: 11400000, guid: deebb65f3ba51f34ba2b52f85a304f53, type: 2}
+  - {fileID: 11400000, guid: 2d6504529dce24046943f21a56019b2e, type: 2}
+  winSprite: {fileID: 0}

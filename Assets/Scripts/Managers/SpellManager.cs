@@ -163,13 +163,11 @@ public class SpellManager : MonoBehaviour
 
         if (currentTutorial != null)
         {
-            // Unfreeze time so the game can breathe
             TutorialManager.Instance.EndTutorialStep(currentTutorial.gridCanvas);
         }
 
         Debug.Log("Waiting for blocks");
 
-        // CRITICAL FIX: Realtime ensures the scan happens even if time glitches!
         yield return new WaitForSecondsRealtime(1f);
 
         if (PatternScanner.Instance != null)
@@ -183,12 +181,10 @@ public class SpellManager : MonoBehaviour
 
         if (currentTutorial != null)
         {
-            // Tell the tutorial to move forward
             currentTutorial.OnGridActionCompleted();
         }
     }
 
-    // --- UI HELPERS ---
 
     public float GetRemainingCooldown(WizardSpells spell)
     {

@@ -40,18 +40,15 @@ public class IngredientFlyEffect : MonoBehaviour
             yield return null;
         }
 
-        // --- SOUND LOGIC GOES HERE ---
         if (arriveSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(arriveSound);
         }
 
-        // Hide the image so it looks like it "entered" the icon while the sound finishes
         GetComponent<Image>().enabled = false;
 
         onComplete?.Invoke();
 
-        // Wait for the sound to finish before deleting the object
         if (arriveSound != null) {
             yield return new WaitForSeconds(arriveSound.length);
         }

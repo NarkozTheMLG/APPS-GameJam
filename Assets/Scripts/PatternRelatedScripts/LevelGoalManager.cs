@@ -20,7 +20,6 @@ public class LevelGoalManager : MonoBehaviour
 
     [HideInInspector] public Recipe currentRecipe;
     
-    // KEEP THIS AS IngredientData[] so PatternScanner doesn't collapse
     [HideInInspector] public IngredientData[] activeRecipes; 
     [HideInInspector] public bool[] isIngredientComplete;
 
@@ -31,10 +30,8 @@ public class LevelGoalManager : MonoBehaviour
 
     private void Start()
     {
-        // FIX: Remove the "- 1" so Level 1 points to Element 1 (Pizza)
         int levelIndex = GameManager.Instance.CurrentLevel;
         
-        // Safety: Prevent index out of bounds
         if (levelIndex >= GameManager.Instance.AllLevelDatas.Length)
             levelIndex = GameManager.Instance.AllLevelDatas.Length - 1;
 
@@ -65,7 +62,6 @@ public class LevelGoalManager : MonoBehaviour
 
         if (foodDisplayIcon != null) foodDisplayIcon.sprite = currentRecipe.FoodSprite;
 
-        // THE TRANSLATOR: Unpack the Ingredients from the Recipe
         activeRecipes = currentRecipe.ingredientsNeeded;
         isIngredientComplete = new bool[activeRecipes.Length];
 
@@ -85,7 +81,6 @@ public class LevelGoalManager : MonoBehaviour
             }
         }
 
-        // Tell the visual notes to update based on these ingredients
         if (RecipitDataManager.Instance != null)
         {
             RecipitDataManager.Instance.RefreshRequiredIngredients();

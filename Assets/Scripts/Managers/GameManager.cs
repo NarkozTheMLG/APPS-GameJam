@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public IngredientData[] allIngredients;
     public int CurrentLevel;
 
-    [Header("Heart System")] // Renamed header for clarity, kept variable 'Hart' to match your project
+    [Header("Heart System")] 
     public int TotalHartNumber;
     public float WaitTimeForHart;
     
@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Logic: Element 0 is Hamburger (Tutorial), Element 1 is Pizza (Level 1)
             if (OpenTutorial) {
                 CurrentLevel = 0; 
             } else {
@@ -109,7 +108,6 @@ public class GameManager : MonoBehaviour
     {
         if (AvailableHart > 0)
         {
-            // Safety: Ensure CurrentLevel is within the AllLevelDatas array
             if (CurrentLevel >= AllLevelDatas.Length) {
                 CurrentLevel = AllLevelDatas.Length - 1;
             }
@@ -117,9 +115,6 @@ public class GameManager : MonoBehaviour
             if (MusicManager.Instance != null)
                 MusicManager.Instance.PlayGameplayMusic();
        
-            // DYNAMIC LOADING: 
-            // Level 0 (Hamburger) goes to "Tutorial" scene
-            // Level 1+ (Pizza, etc) goes to "Level" scene
             if (CurrentLevel == 0) {
                 SceneManager.LoadScene("Tutorial");
             }

@@ -29,15 +29,12 @@ public class LevelManager : MonoBehaviour
 
         LevelData data = GameManager.Instance.AllLevelDatas[currentIdx];
 
-        // 1. Set Timer and Table Visuals
         timeRemaining = data.TimeLimit;
         isGameActive = true;
         
         if (tableDisplay != null) tableDisplay.sprite = data.LevelTable;
 
-        // 2. WE STOP HERE.
-        // Do not assign 'activeRecipes' here. 
-        // LevelGoalManager.Start() handles its own initialization now.
+
         
         Debug.Log("Timer and Table Set for Level Index: " + currentIdx);
     }

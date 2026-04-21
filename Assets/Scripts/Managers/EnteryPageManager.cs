@@ -7,7 +7,6 @@ public class EnteryPageManager : MonoBehaviour
     public static EnteryPageManager Instance { get; private set; }
 
     [Header("Callender for currentLevel")]
-    //public TextMeshProUGUI CurretnLevel;
     public Image CurrentLevelCallender;
 
 
@@ -19,7 +18,6 @@ public class EnteryPageManager : MonoBehaviour
 
     void Start()
     {
-        // if there is a tuttorial we need to modify the index for the sprite
         int temp = GameManager.Instance.CurrentLevel;
         if (temp <= 0){
             temp = 1;

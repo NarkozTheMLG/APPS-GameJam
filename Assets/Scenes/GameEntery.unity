@@ -214,7 +214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &146466122
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!328 &146466123
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   timeLeftForNextHart: 0
   AllLevelDatas:
   - OrderedRecipes:
-    - {fileID: 11400000, guid: 882b780d5d024db41a6d8c057c9461c8, type: 2}
+    - {fileID: 11400000, guid: 3b52f8c242a0b6846b002631df0d64f5, type: 2}
     TimeLimit: 300
     LevelTable: {fileID: -3678053731107237469, guid: ac28e130a001d7a428f32cd347c6a6ce, type: 3}
   - OrderedRecipes:
@@ -1671,7 +1671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1617695674
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2482,6 +2482,6 @@ SceneRoots:
   - {fileID: 209881980}
   - {fileID: 1199507163}
   - {fileID: 1563858106}
-  - {fileID: 1777586469}
   - {fileID: 146466124}
   - {fileID: 1743993305}
+  - {fileID: 1777586469}
